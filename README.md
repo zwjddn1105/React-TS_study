@@ -30,9 +30,61 @@
 - 기간: 12월 4주차 ~ 12월 31일.
 - 강의: 추천받아 선정 예정.
 
-## 📅 스터디 일정
+## 📚 진행 과정
 
-(추가 예정)
+<details>
+  <summary>01주차 : ✅ 24/12/03 ~ 24/12/11 => JS, React 앱 구조, JSX 구문, Props, State, Hooks, Styled_components</summary>
+
+  > 학습 내용
+  - 00_Vanilla_JS
+    - (선택 사항)
+  - 01_React_structure
+  - 02_JSX
+  - 03_Props_State_Hooks
+  - 99_Styled_components
+    - (선택 사항, 하지만 추천)
+
+</details>
+
+<details>
+  <summary>02주차 : ✅ 24/12/12 ~ 24/12/18 => LifeCycle, Context API, useReducer hook, Redux, TailwindCSS</summary>
+
+  > 학습 내용
+  - 04_LifeCycle
+  - 05_Context_API
+  - 06_useReducer_hook
+  - 07_Redux
+
+  - 99_TailwindCSS
+    - (선택 사항, 하지만 추천)
+
+</details>
+
+<details>
+  <summary>03주차 : ✅ 24/12/19 ~ 24/12/22 => 자기소개 페이지 제작 및 배포</summary>
+
+  > 학습 내용
+  - 페이지 제작
+  - 각자 피드백
+  - github pages 혹은 EC2, docker를 이용한 간단 배포
+
+</details>
+
+<details>
+  <summary>04주차 : ✅ 24/12/23 ~ 24/12/24 => TypeScript</summary>
+
+  > 학습 내용
+  - 추후 추가
+
+</details>
+
+<details>
+  <summary>05주차 : ✅ 24/12/25 ~ 24/12/31 => TypeScript</summary>
+
+  > 학습 내용
+  - 추후 추가
+
+</details>
 
 ## 💡 페널티
 - 중도 하차 시 잔여 스터디원들에게 랜덤으로 **아이스 아메리카노 4잔 제공 ☕️.**
@@ -62,8 +114,43 @@
         </a>
       </td>
       <td style="text-align: center;">
-        <a href="https://github.com/Yeseung-Park">
-          <img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg" width="110" style="border-radius: 10px;">
+        <a href="https://github.com/JUMINAHN">
+          <img src="https://avatars.githubusercontent.com/u/140716804?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/minjeeki">
+          <img src="https://avatars.githubusercontent.com/u/148981647?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/heeeeeeeeeee1">
+          <img src="https://avatars.githubusercontent.com/u/175369502?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/aaaange">
+          <img src="https://avatars.githubusercontent.com/u/128114236?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/zwjddn1105">
+          <img src="https://avatars.githubusercontent.com/u/175976497?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/ebeleey">
+          <img src="https://avatars.githubusercontent.com/u/175283788?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/hseegr">
+          <img src="https://avatars.githubusercontent.com/u/175369230?v=4" width="110" style="border-radius: 10px;">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Moon-sang-hyeok">
+          <img src="https://avatars.githubusercontent.com/u/175284018?v=4" width="110" style="border-radius: 10px;">
         </a>
       </td>
     </tr>
@@ -72,7 +159,28 @@
         <center><a href="https://github.com/SorrowAddict">정도영</a></center>
       </td>
       <td>
-        <center><a href="https://github.com/?">?</a></center>
+        <center><a href="https://github.com/JUMINAHN">안주민</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/minjeeki">김민지</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/heeeeeeeeeee1">박희원</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/aaaange">이아영</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/zwjddn1105">김정우</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/ebeleey">이다이</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/hseegr">김희수</a></center>
+      </td>
+      <td>
+        <center><a href="https://github.com/Moon-sang-hyeok">문상혁</a></center>
       </td>
     </tr>
   </tbody>
