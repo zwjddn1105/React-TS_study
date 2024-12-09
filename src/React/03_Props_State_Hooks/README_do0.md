@@ -79,7 +79,45 @@ function App() {
 
 # State
 
+> **변화할 수 있는 동적의 값**
 
+### useState 기본 예제
+
+```JS
+import "./App.css"
+import { useState } from "react"
+
+function App() {
+  const [count, setCount] = useState(0)         // 구조 분해 할당을 이용
+  const [light, setLight] = useState("off")     // 구조 분해 할당을 이용
+
+  return (
+    <>
+      <div>
+        <h1>{light}</h1>
+        <button
+          onClick={() => {
+            setLight(light === "ON" ? "OFF" : "ON")
+          }}
+        >
+          {light === "ON" ? "끄기" : "켜기"}
+        </button>
+      </div>
+      <h1>{count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1)
+        }}
+      >
+        +
+      </button>
+    </>
+  )
+}
+
+export default App
+```
+useState 를 사용함으로써 리액트에게 컴포넌트의 변화를 알려 Re-Rendering 되게 함
 
 <br><br>
 
