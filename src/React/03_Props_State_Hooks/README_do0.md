@@ -67,6 +67,12 @@ function App() {
 와 같이 스프레드 연산자와 객체를 이용해서도 Props를 전달할 수 있음<br>
 또 **컴포넌트 하위에 html, 컴포넌트** 등을 작성하여도 props.children 으로 props를 전달받을 수 있음
 
+### Props Drilling 이란?
+
+- Props Drilling, Context API, react-query (Data Fetching Hook Library), useResource에 관련한 내용이 담긴 토스 유튜브
+
+[토스 SSR 관련 유튜브](https://youtu.be/IKyA8BKxpXc)
+
 <br><br>
 
 ---
