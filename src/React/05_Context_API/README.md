@@ -1,50 +1,41 @@
-# 📚 각 강의 참고 목차
+# 05_Context_API
 
-### 00_Vanilla JS
+React의 Context API는 컴포넌트 트리 전체에 데이터를 효과적으로 공유하는 도구
 
-- '한입 리액트' : 섹션 1. 시작하며 ~ 섹션 2. JavaScript 기본
-- '리액트 완벽 가이드' : 섹션 2. 자바스크립트 새로고침
 
-### 01_React 구조
 
-- '한입 리액트' : 섹션 4. React.js 개론
-- '리액트 완벽 가이드' : 섹션 3. 리액트 핵심 - 컴포넌트, JSX, 속성, 상태 등
+## 주요 개념
 
-### 02_JSX 구문
+| 개념 | 설명 |
+|------|------|
+| Context | 데이터를 공유하기 위한 컨테이너 |
+| Provider | Context의 값을 설정하는 컴포넌트 |
+| Consumer | Context의 값을 사용하는 컴포넌트 |
+| useContext | 함수형 컴포넌트에서 Context를 쉽게 사용하는 Hook |
 
-- '한입 리액트' : X
-- '리액트 완벽 가이드' : 섹션 3. 리액트 핵심 - 컴포넌트, JSX, 속성, 상태 등
+<br>
 
-### 03_Props, State, Hooks
+## useContext 사용 예시
+```jsx
+import React, { useContext } from 'react';
+import { TodoStateContext, TodoDispatchContext } from './App';
 
-- '한입 리액트' : React 입문
-- '리액트 완벽 가이드' : 섹션3. 리액트 핵심 - 컴포넌트, JSX, 속성, 상태 등, 섹션 4. 리액트 핵심 - 심화 단계
+function TodoItem() {
+  const todos = useContext(TodoStateContext);
+  const { onUpdate, onDelete } = useContext(TodoDispatchContext);
 
-### 04_라이프사이클
+  // 컴포넌트 로직...
+}
+```
+<br>
 
-- '한입 리액트' : 섹션 7. 라이프사이클
-- '리액트 완벽 가이드' : 리액트 핵심 - 컴포넌트, JSX, 속성, 상태 등, 리액트 핵심 - 심화 단계
+## 장점
+- 프롭 드릴링 문제 해결
+- 전역 상태 관리 간소화
+- 컴포넌트 간 데이터 공유 용이
 
-### 05_Context API
+## 주의사항
+- 자주 변경되는 데이터에는 부적합할 수 있음
+- 과도한 사용 시 컴포넌트 재사용성 저하 가능
 
-- '한입 리액트' : 섹션 11. Context
-- '리액트 완벽 가이드' : 섹션 10. 리액트의 컨텍스트 API & useReducer - 상태 관리 심화 단계
-
-### 06_useReducer_hook
-
-- '한입 리액트' : 섹션 9. useReducer
-- '리액트 완벽 가이드' : 섹션 10. 리액트의 컨텍스트 API & useReducer - 상태 관리 심화 단계
-
-### 07_Redux
-
-- '한입 리액트' : X
-- '리액트 완벽 가이드' : 리덕스에 뛰어들기 (컨텍스트 API의 대안), 고급 리덕스
-
-### 99_Styled_components
-
-- '리액트 완벽 가이드' : 섹션 6. 리액트 컴포넌트 스타일링
-
-### 99_TailwindCSS
-
-- '리액트 완벽 가이드' : 섹션 6. 리액트 컴포넌트 스타일링
-
+Context API를 적절히 활용하면 React 애플리케이션의 상태 관리를 효율적으로 할 수 있음
