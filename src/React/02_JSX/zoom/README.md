@@ -5,7 +5,7 @@
 
 # JSX란?
 
-![alt text](image.png)
+![alt text](./image/image.png)
 - 비표준 자바스크립트 표준을 사용 == `.jsx`를 사용함
 - (즉 JS 문법 확장자) jsx라는 자바스크립트 문법을 사용한다.
     - **HTML 마크업 코드를 작성하여 HTML 요소를 설명하고 생성할 수 있게 한다.**
@@ -16,9 +16,9 @@
 
 ### JSX 참고 자료
 ---
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](./image/image-1.png)
+![alt text](./image/image-2.png)
+![alt text](./image/image-3.png)
 
 <br>
 
@@ -74,27 +74,27 @@ React에서 UI를 설명하는데 사용
 
 # 컴포넌트란?
 
-![alt text](image-4.png)
+![alt text](./image/image-4.png)
 - 첫번쨰 문자를 대문자로 작성해야 하며
 - 함수에서 `렌더링 가능한 값`이 반환되어야 함
     - HTML로 변환할 것
 
 ## 컴포넌트 참고 내용
 
-![alt text](image-5.png)
-![alt text](image-6.png)
+![alt text](./image/image-5.png)
+![alt text](./image/image-6.png)
 
 <br>
 
 # 컴포넌트 구축의 장점 : 재사용성
 
 
-![alt text](image-8.png)
+![alt text](./image/image-8.png)
 
 <br>
 
 
 # 커스텀 컴포넌트는 어디에든 정의할 수 있다.
 
-![alt text](image-7.png)
+![alt text](./image/image-7.png)
 

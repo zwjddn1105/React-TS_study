@@ -16,7 +16,7 @@
   <br> ⇒ 컴포넌트 함수를 직접 코드에 호출하는 것X
     - **HTML 요소로 사용하는 것 : 실제로는 리액트가 실제 함수를 부르는 것**
 
-![alt text](image.png)
+![alt text](./image/image.png)
 
 - 컴포넌트를 설정하는 개념을 `props`라고 부름
 
@@ -28,7 +28,7 @@
 
 <br>
 
-![alt text](image-4.png)
+![alt text](./image/image-4.png)
 - 또한 Props로 내려준 입력 값을 받아들이고 사용하기 위해 `매개변수를` 추가
     - 매개 변수에 대해 일반적으로 선택되는 이름
 
@@ -102,7 +102,7 @@ const House = () => {
 
 ## 객체가 되는 과정
 
-![alt text](image-5.png)
+![alt text](./image/image-5.png)
 
 ## Props의 객체화 과정
 
@@ -110,7 +110,7 @@ const House = () => {
 2. React는 이 속성들을 하나의 객체로 모음
 3. 이 객체가 컴포넌트 함수의 첫 번째 매개변수로 전달
 
-![alt text](image-6.png)
+![alt text](./image/image-6.png)
 
 
 ## Props 사용 방법
@@ -208,7 +208,7 @@ function UserProfile(props) {
 
 ## 더 다양한 Prop(속성) 문법
 
-![alt text](image-7.png)
+![alt text](./image/image-7.png)
 
 <br>
 
@@ -219,5 +219,5 @@ function UserProfile(props) {
 - 다른 내부 함수에 중첩되거나 if/else 조건문 사용도 안됨
 </aside>
 
-![alt text](image-8.png)
+![alt text](./image/image-8.png)
 
