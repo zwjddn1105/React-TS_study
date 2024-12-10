@@ -212,6 +212,79 @@ function UserProfile(props) {
 
 <br>
 
+
+# State 이해하기
+
+## state 사용으로 인한 이점 : JS와 비교
+| 특성 | React State | JavaScript 변수 | State 사용의 이점 |
+|------|-------------|-----------------|-------------------|
+| 정의 | 컴포넌트의 데이터를 저장하고 관리하는 객체 | 일반적인 데이터 저장 변수 | 컴포넌트의 동적 데이터 관리에 최적화 |
+| 반응성 | 변경 시 자동으로 컴포넌트 리렌더링 | 변경 시 자동 리렌더링 없음 | UI가 데이터 변화에 자동으로 반응 |
+| 지속성 | 컴포넌트 생명주기 동안 유지 | 함수 실행 후 소멸 (지역 변수의 경우) | 여러 렌더링 사이에서 데이터 유지 |
+| 업데이트 방식 | setState 함수를 통한 비동기 업데이트 | 직접 값 할당 | 성능 최적화 및 일관된 상태 관리 |
+| 불변성 | 직접 수정 불가, 새 값으로 대체 | 직접 수정 가능 | 예측 가능한 상태 변화와 버그 감소 |
+| 컴포넌트 독립성 | 각 컴포넌트가 자체 State 소유 | 전역/지역 변수로 관리 | 모듈화와 재사용성 향상 |
+
+
+## state와 setState 사용과 실제 예시 이해하기
+
+| 기능 | 설명 | 예시 코드 |
+| --- | --- | --- |
+| 상태 초기화 | useState를 통해 
+초기 상태 설정 | `const [searchTerm, setSearchTerm] = useState('');` |
+| 사용자 입력 반영 | 입력 변경 시 상태 업데이트 | `setSearchTerm(e.target.value);` |
+| 상태 초기화 | 상태를 빈 문자열로 리셋 | `setSearchTerm('');` |
+| 기본값 설정 | 상태를 특정 값으로 설정 | `setSearchTerm('Default');` |
+| 이전 상태 기반 업데이트 | 현재 상태를 기반으로 
+새 상태 계산 | `setSearchTerm(prev => prev + ' 추가');` |
+
+예시 코드:
+
+```jsx
+import React, { useState } from 'react';
+
+function SearchBar() {
+  const [searchTerm, setSearchTerm] = useState(''); // 상태 초기화
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value); // 사용자 입력 반영
+  };
+
+  const clearSearch = () => {
+    setSearchTerm(''); // 상태 초기화
+  };
+
+  const setDefaultSearch = () => {
+    setSearchTerm('Default'); // 기본값 설정
+  };
+
+  const appendToSearch = () => {
+    setSearchTerm(prev => prev + ' 추가'); // 이전 상태 기반 업데이트
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearch}
+        placeholder="검색어를 입력하세요"
+      />
+      <button onClick={clearSearch}>Clear</button>
+      <button onClick={setDefaultSearch}>Set Default</button>
+      <button onClick={appendToSearch}>Append</button>
+      <p>Current search: {searchTerm}</p>
+    </div>
+  );
+}
+
+export default SearchBar;
+
+```
+
+<br>
+<br>
+
 # 리액트 훅 : `use`로 시작하는 모든 함수
 
 <aside>
@@ -220,4 +293,14 @@ function UserProfile(props) {
 </aside>
 
 ![alt text](./image/image-8.png)
+
+
+| 훅 이름 | 주요 기능 | 사용 예시 | 주의사항 |
+|---------|----------|-----------|----------|
+| useState | 상태 관리 | `const [state, setState] = useState(initialState);` | 상태 업데이트는 비동기적으로 이루어짐 |
+| useEffect | 부수 효과 처리 | `useEffect(() => { // 효과 }, [dependencies]);` | 의존성 배열을 올바르게 지정해야 함 |
+| useContext | 컨텍스트 사용 | `const value = useContext(MyContext);` | 컨텍스트 제공자가 필요함 |
+| useReducer | 복잡한 상태 로직 관리 | `const [state, dispatch] = useReducer(reducer, initialArg, init);` | 상태 업데이트 로직을 분리할 때 유용 |
+| useRef | DOM 참조, 변경 가능한 값 저장 | `const inputRef = useRef(null);` | 값 변경 시 리렌더링 발생하지 않음 |
+| useMemo | 계산 결과 메모이제이션 | `const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);` | 성능 최적화에 사용, 과도한 사용 주의 |
 
