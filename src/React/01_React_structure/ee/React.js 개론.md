@@ -1,6 +1,11 @@
-# [한입 리액트] React.js 개론
+# React.js 개론
+## 목차
+- [4.1) React.js 개론](#41reactjs-개론)
+- [4.2) React App 생성](#42-react-app-생성)
+- [4.3) React App 구동원리](#43-react-app-구동원리)
 
-## React.js 개론
+
+## [4.1] React.js 개론
 
 ### **React의 기술적 특징**
 
@@ -58,7 +63,7 @@ React는 선언형 프로그래밍 방식을 사용하여, 사용자의 행동(�
 - 여러 업데이트가 동시에 발생할 경우, React는 이를 Virtual DOM에서 처리한 후, 변경 사항을 한 번에 Actual DOM에 반영.
 - **효율적인 DOM 업데이트**로 ReFlow와 RePainting 횟수를 줄여 성능 저하를 방지한다.
 
-## React App 생성
+## [4.2] React App 생성
 
 1. Node.js 패키지 생성
 2. React 라이브러리 설치
@@ -128,7 +133,7 @@ $ npm run dev
 
 ```
 
-## React App 구동원리
+## [4.3] React App 구동원리
 
 React 앱은 내장된 Web Server를 `npm run dev` 명령어를 통해 가동하여 실행된다.
 
