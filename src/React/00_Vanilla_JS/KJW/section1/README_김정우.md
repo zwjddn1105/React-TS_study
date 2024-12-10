@@ -6,10 +6,10 @@
 - js, html, css와 함께 web페이지를 개발하기 위한 언어
 - html이 요소들의 내용, 배치 모양을 정하기 위해 사용되는 언어지만 색상이나 디자인 등의 수정은 불가능하다, css가 요소들의 색상, 크기 등의 스타일을 설정하게 만들어주나 아직 부족하다. 웹 내부에서 작용하는 상호작용을 만들어주기 위해서 웹을 움직이게 하는 웹의 근육의 역할을 한다고 표현할 수 있다. (웹을 실질적으로 움직임, 동적으로 움직이게 만들어준다.)
 - 그럼 js가 어떻게 실행될까?
-    - js엔진에 의해 실행된다. 이 엔진이 없다면 실행은커녕 해석조차 불가능하다.  이 엔진은 크롬이나 사파리같은 웹 브라우저에 기본으로 탑재되어있다. 따라서 웹 브라우저를 이용하면 간단한 js코드를 직접 실행해 볼 수 있다.
+  - js엔진에 의해 실행된다. 이 엔진이 없다면 실행은커녕 해석조차 불가능하다. 이 엔진은 크롬이나 사파리같은 웹 브라우저에 기본으로 탑재되어있다. 따라서 웹 브라우저를 이용하면 간단한 js코드를 직접 실행해 볼 수 있다.
 - 개발자도구
-    - 웹개발을 할 때 필요한 여러가지 도구들을 모아놓은 패널이라고 생각하면 됨
-    - 콘솔에서 깜빡이는 커서를 프롬프트(prompt)라고함, 콘솔에서 위와 같은 기능을 수행할 수 있다.  undefined는 무시해도 괜찮음
+  - 웹개발을 할 때 필요한 여러가지 도구들을 모아놓은 패널이라고 생각하면 됨
+  - 콘솔에서 깜빡이는 커서를 프롬프트(prompt)라고함, 콘솔에서 위와 같은 기능을 수행할 수 있다. undefined는 무시해도 괜찮음
 
 ![image.png](image.png)
 
@@ -23,43 +23,43 @@
 
 - 변수, 상수는 값을 저장하는 박스
 
-```
-console.log("chapter4")
+```jsx
+console.log("chapter4");
 // 1. 변수
-// let age = 27 
+// let age = 27
 // let과같이 없던 변수를 만드는 것을 선언이라하며 27과같은 어떠한 값을 저장하는 것을 초기화한다 함
-let age
+let age;
 // 처음에 변수를 선언하고 초기화를 해주지 않아도 괜찮음
 // let으로 만든 키워드는 이름으로 구분이 되기 때문에 중복된이름으로 다시 선언하는건 불가능
 
 // 2. 상수
 // 상수는 변수와는 달리 한 번 저장된 값을 다시는 바꿀 수가 없다
-const birth = "1997.01.07"
+const birth = "1997.01.07";
 // birth = "123" // 이런거 불가능하다
 // 생일처럼 값이 변할 수 없거나 변하지 말아야할 일이 있을 때 사용
 // 즉 let과 달리 선언만하고 초기화를 하지 않는 것은 불가능하다
 
 // 3. 변수 명명규칙(네이밍 규칙)
 // 3-1. $, _ 제외한 기호는 사용할 수 없다.
-let $_name 
+let $_name;
 
 // 3-2. 숫자로 시작할 수 없다.
-let name1
+let name1;
 // let 2name 이런거 불가능
 // 꼭 앞에 숫자를 넣고싶다면
-let _2name // 혹은
-let $2name // 이렇게 사용함
+let _2name; // 혹은
+let $2name; // 이렇게 사용함
 
 // 3-3. 예약어를 사용할 수 없다.
 
 // 4. 변수 명명 가이드
-let a = 1
-let b = 1
-let c = a - b
+let a = 1;
+let b = 1;
+let c = a - b;
 // 이런식으로 명명하게되면 협업할 때 너무 힘듦, 혼자는 괜찮음
-let salesCount = 1
-let refundCount = 1
-let totalSalesCount = salesCount - refundCount
+let salesCount = 1;
+let refundCount = 1;
+let totalSalesCount = salesCount - refundCount;
 // 이렇게 하는게 나중에 내가 직접수정할 때에도 편하다.
 ```
 
@@ -67,74 +67,72 @@ let totalSalesCount = salesCount - refundCount
 
 - 동일한 속성이나 특징을 가진 원소들을 묶은 것이라 생각 ex) string, number ..
 - 원시타입
-    - Number
-    - String
-    - Boolean
-    - Null
-    - Undefined
-    - 기본형 타입이라고 불림
-    - 프로그래밍에 있어 가장 기본적인 값들의 타입을 의미함
-    
-    ```jsx
-    // 1. Number Type
-    let num1 = 27
-    let num2 = 1.5
-    let num3 = -20
-    // 사칙연산 모두지원
-    
-    let inf = Infinity
-    let mInf = -Infinity
-    let nan = NaN // Not a Number
-    console.log(1*"Hello") // 불가능한 수치연산 -> 결과가 NaN으로 나옴
-    
-    // 2. String Type
-    let myName = "김정우"
-    // 따옴표를 사용하지 않는다면 김정우를 문자열이 아닌 변수로 취급함
-    let myLocation = "목동"
-    let introduce = myName + myLocation
-    console.log(introduce) // 김정우목동
-    // 즉 js에서는 string 덧셈연산을 지원함
-    let introduceText = `${myName}는 ${myLocation}에 거주합니다`
-    // python의 f-string과 같음
-    console.log(introduceText) // 김정우는 목동에 거주합니다
-    // 이를 템플릿 리터럴 문법이라고 부른다. 중요함
-    
-    // 3. Boolean Type
-    let isSwitchOn = true
-    let isEmpty = false
-    
-    // 4. Null Type (아무것도 없다)
-    let empty = null
-    
-    // 5. Undefined Type
-    // null타입처럼 특수한타입, 변수를 선언하고 그 변수에 어떠한값도 지정하지 않았을 때(초기화 안했을 때)
-    // 자동으로 할당되는 값이다.
-    let none
-    console.log(none) // undefined
-    // null과의 차이점은 null은 개발자가 '직접' 명시해서 할당을 해줘야함
-    ```
-    
+  - Number
+  - String
+  - Boolean
+  - Null
+  - Undefined
+  - 기본형 타입이라고 불림
+  - 프로그래밍에 있어 가장 기본적인 값들의 타입을 의미함
+  ```jsx
+  // 1. Number Type
+  let num1 = 27;
+  let num2 = 1.5;
+  let num3 = -20;
+  // 사칙연산 모두지원
+
+  let inf = Infinity;
+  let mInf = -Infinity;
+  let nan = NaN; // Not a Number
+  console.log(1 * "Hello"); // 불가능한 수치연산 -> 결과가 NaN으로 나옴
+
+  // 2. String Type
+  let myName = "김정우";
+  // 따옴표를 사용하지 않는다면 김정우를 문자열이 아닌 변수로 취급함
+  let myLocation = "목동";
+  let introduce = myName + myLocation;
+  console.log(introduce); // 김정우목동
+  // 즉 js에서는 string 덧셈연산을 지원함
+  let introduceText = `${myName}는 ${myLocation}에 거주합니다`;
+  // python의 f-string과 같음
+  console.log(introduceText); // 김정우는 목동에 거주합니다
+  // 이를 템플릿 리터럴 문법이라고 부른다. 중요함
+
+  // 3. Boolean Type
+  let isSwitchOn = true;
+  let isEmpty = false;
+
+  // 4. Null Type (아무것도 없다)
+  let empty = null;
+
+  // 5. Undefined Type
+  // null타입처럼 특수한타입, 변수를 선언하고 그 변수에 어떠한값도 지정하지 않았을 때(초기화 안했을 때)
+  // 자동으로 할당되는 값이다.
+  let none;
+  console.log(none); // undefined
+  // null과의 차이점은 null은 개발자가 '직접' 명시해서 할당을 해줘야함
+  ```
 - 객체타입
-    - Object
-    - Array
-    - Function
-    - RegexExp
+  - Object
+  - Array
+  - Function
+  - RegexExp
 
 ## 1.6 형변환
 
 - 어떤 값의 타입을 다른 타입으로 변경하는 것을 말한다.
 - 묵시적 형 변환(암묵적 형 변환)
-    - 개발자가 직접 설정하지 않아도 알아서 js엔진이 형 변환 하는 것
+  - 개발자가 직접 설정하지 않아도 알아서 js엔진이 형 변환 하는 것
 - 명시적 형 변환
-    - 개발자가 직접 함수를 이용해 형변환을 일으킨다.
+  - 개발자가 직접 함수를 이용해 형변환을 일으킨다.
 
 ```jsx
 // 1. 묵시적 형 변환
 // -> js 엔진이 알아서 형 변환 하는 것
-let num = 10
-let str = "20"
-const result = num + str
-console.log(result) // 1020
+let num = 10;
+let str = "20";
+const result = num + str;
+console.log(result); // 1020
 // num이 묵시적으로 string으로 형변환이 됨
 // 모든 불가능한 연산에 묵시적형변환이 진행되는 것이 아닌
 // 특정 하나의 변수의 값을 형변환했을 때 오류가 발생하지 않고 연산이 잘 종료되는 경우에만 됨
@@ -142,78 +140,78 @@ console.log(result) // 1020
 // 2. 명시적 형 변환
 // -> 프로그래머가 내장함수 등을 이용해서 직접 형 변환을 명시
 // -> 문자열을 숫자로 변환한다면
-let str1 = 10
-let strToNum1 = Number(str1)
-console.log(10 + strToNum1) // 20
+let str1 = 10;
+let strToNum1 = Number(str1);
+console.log(10 + strToNum1); // 20
 
-let str2 = "10개"
+let str2 = "10개";
 // let strToNum2 = Number(str2)
 // console.log(strToNum2) // NaN
-let strToNum2 = parseInt(str2)
-console.log(strToNum2) // 10
-let str3 = "adsfa10개"
-let strToNum3 = parseInt(str3)
-console.log(strToNum3) // NaN
+let strToNum2 = parseInt(str2);
+console.log(strToNum2); // 10
+let str3 = "adsfa10개";
+let strToNum3 = parseInt(str3);
+console.log(strToNum3); // NaN
 // 앞에 문자열이 있으면 안됨
 
-let num1 = 20
-let numTostr1 = String(num1)
-console.log(numTostr1 + "입니다") // 20입니다
+let num1 = 20;
+let numTostr1 = String(num1);
+console.log(numTostr1 + "입니다"); // 20입니다
 ```
 
 ## 1.7~8 연산자1, 2
 
-- +, -, *, /
+- +, -, \*, /
 
 ```jsx
 // 1. 대입 연산자 '='
-let var1 = 1
+let var1 = 1;
 
 // 2. 산술 연산자
-let num1 = 3 + 2
-let num2 = 3 - 2
-let num3 = 3 * 2
-let num4 = 3 / 2
-let num5 = 3 % 2
+let num1 = 3 + 2;
+let num2 = 3 - 2;
+let num3 = 3 * 2;
+let num4 = 3 / 2;
+let num5 = 3 % 2;
 // * / % 가 +,-보다 우선순위가 높다
-let num6 = 1 + 2 * 10 
-console.log(num6) // 21
-let num7 = (1 + 2) * 10 // 30
+let num6 = 1 + 2 * 10;
+console.log(num6); // 21
+let num7 = (1 + 2) * 10; // 30
 // 그냥 수학이랑 똑같다고 생각
 
 // 3. 복합 대입 연산자
-let num8 = 10
-num8 = num8 + 20 // 이렇게 해도 되지만
-num8 += 20 // 이렇게해도 됨
-num8 %= 10 // 이것도 가능
-console.log(num8) // 50
+let num8 = 10;
+num8 = num8 + 20; // 이렇게 해도 되지만
+num8 += 20; // 이렇게해도 됨
+num8 %= 10; // 이것도 가능
+console.log(num8); // 50
 
 // 4. 증감 연산자
-let num9 = 10
-num9++ // 이 라인이 끝나야 1이 추가되는 것임, 후위연산
-console.log(num9) // 11
-console.log(++num9) // 12, 전위연산
+let num9 = 10;
+num9++; // 이 라인이 끝나야 1이 추가되는 것임, 후위연산
+console.log(num9); // 11
+console.log(++num9); // 12, 전위연산
 
 // 5. 논리 연산자
-let or = true || false
-let and = true && false
-let not = !true
+let or = true || false;
+let and = true && false;
+let not = !true;
 
-console.log(or, and, not) // true, false, false
+console.log(or, and, not); // true, false, false
 
 // 6. 비교 연산자
-let comp1 = 1 === 2
-let comp2 = 1 !== 2
-console.log(comp1, comp2) // false, true
+let comp1 = 1 === 2;
+let comp2 = 1 !== 2;
+console.log(comp1, comp2); // false, true
 // = 을 2개써도 같은결과지만 3개쓰는이유는 2개만쓰면 값의 자료형까지 같은지는 비교가 안됨
 // 예를들어 1=='1' 이렇게하면 true로 출력되게 된다.
-let comp3 = 2 > 1
-let comp4 = 2 < 1
-console.log(comp3, comp4) // true, false
+let comp3 = 2 > 1;
+let comp4 = 2 < 1;
+console.log(comp3, comp4); // true, false
 
-let comp5 = 2 >= 2
-let comp6 = 2 <= 2
-console.log(comp5, comp6) // true, true
+let comp5 = 2 >= 2;
+let comp6 = 2 <= 2;
+console.log(comp5, comp6); // true, true
 ```
 
 ---
@@ -225,43 +223,43 @@ console.log(comp5, comp6) // true, true
 // -> 존재하는 값을 추려내는 기능
 // -> null, undefined가 아닌 값을 찾아내는 연산자
 
-let var1
-let var2 = 10
-let var3 = 20
+let var1;
+let var2 = 10;
+let var3 = 20;
 
-let var4 = var1 ?? var2
-console.log(var4) // 10
+let var4 = var1 ?? var2;
+console.log(var4); // 10
 // var1은 undefined var2는 10, 즉 var4에 undefined가 아닌 10값을 찾아서 저장함
 
-let var5 = var1 ?? var3
-console.log(var5) // 20
+let var5 = var1 ?? var3;
+console.log(var5); // 20
 
-let var6 = var2 ?? var3
+let var6 = var2 ?? var3;
 // 둘다 undefined이나 null이 아니면 그냥 맨 처음에 오는 var2가 할당됨
-console.log(var6) // 10
+console.log(var6); // 10
 
-let userName
-let userNickName = "Winterlood"
+let userName;
+let userNickName = "Winterlood";
 
-let displayName = userName ?? userNickName
-console.log(displayName) // Winterlood
+let displayName = userName ?? userNickName;
+console.log(displayName); // Winterlood
 
 // 2. typeof 연산자
 // -> 값의 타입을 문자열로 반환하는 기능을 하는 연산자
-let var7 = 1
-var7 = 'hello'
-let t1 = typeof var7
-console.log(t1) // string
+let var7 = 1;
+var7 = "hello";
+let t1 = typeof var7;
+console.log(t1); // string
 
 // 3. 삼항 연산자
 // -> 항을 3개 사용하는 연산자
 // -> 조건식을 이용해서 참, 거짓일 때의 값을 다르게 반환
-let var8 = 10
+let var8 = 10;
 
 // 요구사항: 변수 res에 var8의 값이 짝수라면 "짝", 홀수라면 "홀"저장
-let res = var8 % 2 === 0 ? "짝수" : "홀수"
+let res = var8 % 2 === 0 ? "짝수" : "홀수";
 // 조건식 ? 참일때 : 거짓일때
-console.log(res) // 짝수
+console.log(res); // 짝수
 ```
 
 ## 1.9 조건문
@@ -319,7 +317,6 @@ switch (animal) {
 // 위에서부터 쭉 탐색을 하다가 일치하는 case를 만나게되면 그 아래에있는 모든 코드를 실행시킴
 // 그래서 case문 아래는 break를 다 써주는게 일반적
 // 만약 일치하는 case가 없다면 default를 실행시켜주도록 만들면 됨
-
 ```
 
 ## 1.10 반복문
@@ -423,7 +420,6 @@ let varC = function () {
 let varD = (value) => value + 1;
 
 console.log(varD(10)); // 11
-
 ```
 
 ## 1.13 콜백함수
@@ -478,7 +474,6 @@ repeat(5, function (idx) {
   console.log(idx * 3);
 }); // 3 6 9 12 15
 // 콜백함수를 함수표현식이 아닌 화살표함수로 바꿔도 된다. 이게 가장 깔끔
-
 ```
 
 ## 1.14 스코프
@@ -514,7 +509,6 @@ for (let i = 0; i < 10; i++) {
 // 함수 선언식 안에서 중첩함수를 선언했다면 그 중첩함수도 지역스코프를 갖는다.
 // 하지만 if나 for 같은 조건문이나 반복문 안에서 선언식함수는 지역스코프를 갖지 않는다. 예외적이다
 // 함수 선언식만 그렇다~
-
 ```
 
 ## 1.15 객체1
@@ -572,7 +566,6 @@ let result1 = "name" in person;
 console.log(result1); // true
 let result2 = "cat" in person;
 console.log(result2); // false
-
 ```
 
 ## 1.16 객체2
@@ -605,7 +598,6 @@ const person = {
 
 person.sayHi();
 person["sayHi"]();
-
 ```
 
 ## 1.17 배열
@@ -627,5 +619,4 @@ console.log(item1, item2); // 1,2
 
 arrC[0] = "hello";
 console.log(arrC); // 수정도 됨
-
 ```
