@@ -125,3 +125,20 @@ useState 를 사용함으로써 리액트에게 컴포넌트의 변화를 알려
 
 # Hooks
 
+> 클래스 컴포넌트의 기능을 함수 컴포넌트에서도 사용할 수 있도록 도와주는 메서드들
+>> 이름 앞에 접두사 use가 붙음
+
+1. useState
+    - State 기능을 낚아채오는 Hook
+2. useRef
+    - Reference 기능을 낚아채오는 Hook
+3. useEffect
+4. useReducer
+5. ... 등등 이 존재
+
+### Hooks 들의 특징
+
+1. 함수 컴포넌트 내부에서만 호출 가능
+2. 조건문, 반복문 내에서 호출 불가
+3. Custom Hook 제작 가능
+
