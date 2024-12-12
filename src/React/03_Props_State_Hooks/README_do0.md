@@ -79,11 +79,66 @@ function App() {
 
 # State
 
+> **변화할 수 있는 동적의 값**
 
+### useState 기본 예제
+
+```JS
+import "./App.css"
+import { useState } from "react"
+
+function App() {
+  const [count, setCount] = useState(0)         // 구조 분해 할당을 이용
+  const [light, setLight] = useState("off")     // 구조 분해 할당을 이용
+
+  return (
+    <>
+      <div>
+        <h1>{light}</h1>
+        <button
+          onClick={() => {
+            setLight(light === "ON" ? "OFF" : "ON")
+          }}
+        >
+          {light === "ON" ? "끄기" : "켜기"}
+        </button>
+      </div>
+      <h1>{count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1)
+        }}
+      >
+        +
+      </button>
+    </>
+  )
+}
+
+export default App
+```
+useState 를 사용함으로써 리액트에게 컴포넌트의 변화를 알려 Re-Rendering 되게 함
 
 <br><br>
 
 ---
 
 # Hooks
+
+> 클래스 컴포넌트의 기능을 함수 컴포넌트에서도 사용할 수 있도록 도와주는 메서드들
+>> 이름 앞에 접두사 use가 붙음
+
+1. useState
+    - State 기능을 낚아채오는 Hook
+2. useRef
+    - Reference 기능을 낚아채오는 Hook
+3. useEffect
+4. useReducer
+5. ... 등등 이 존재
+
+### Hooks 들의 특징
+
+1. 함수 컴포넌트 내부에서만 호출 가능
+2. 조건문, 반복문 내에서 호출 불가
+3. Custom Hook 제작 가능
 
