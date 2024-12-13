@@ -33,7 +33,7 @@
 ## 📚 진행 과정
 
 <details>
-  <summary>01주차 : ✅ 24/12/03 ~ 24/12/11 => JS, React 앱 구조, JSX 구문, Props, State, Hooks, Styled_components</summary>
+  <summary>01주차 : ✅ 24/12/03 ~ 24/12/11 => JS, React 앱 구조, JSX 구문, Props, State, Hooks, LifeCycle, Context API</summary>
 
   > 학습 내용
   - 00_Vanilla_JS
@@ -41,6 +41,8 @@
   - 01_React_structure
   - 02_JSX
   - 03_Props_State_Hooks
+  - 04_LifeCycle
+  - 05_Context_API
   - 99_Styled_components
     - (선택 사항, 하지만 추천)
 
@@ -63,13 +65,42 @@
   <summary>02주차 : ✅ 24/12/12 ~ 24/12/18 => LifeCycle, Context API, useReducer hook, Redux, TailwindCSS</summary>
 
   > 학습 내용
+  - React 완벽 가이드 추천 목차
+    - (15). "import" 및 "export"
+    - (25). 스프레드 연산자
+    - (64). 문제: 내부 요소에 Props(속성)이 전달되지 않을 경우
+    - (65). 감싸진 요소에 Props(속성) 전달하기
+    - (67). 컴포넌트 타입 동적으로 설정하기
+    - (71). 세부 과정: 이미지 저장소 public/ VS assets/
+    - (78). 사용자 입력 & 양방향 바인딩
+    - (81). State(상태) 끌어올리기 [핵심 개념]
+  - PJT1_카운터 앱 실습
   - 04_LifeCycle
   - 05_Context_API
+    -  (162. ~ 172.) (완벽 가이드 목차)
+  - PJT2_투두리스트 실습
   - 06_useReducer_hook
-  - 07_Redux
+  - PJT3_감성일기장 실습
+  - 07_Redux (선택)
+  - 10_Optimization (Vue의 computed 와 유사한 Hook, useMemo)
 
-  - 99_TailwindCSS
+  - 99_Styled_components
     - (선택 사항, 하지만 추천)
+    - 완벽 가이드 목차 섹션 6.
+  - 99_TailwindCSS
+    - 완벽 가이드 목차 섹션 6.
+
+    ### 📅 세부 일정  
+
+  | 날짜        | 학습 내용                                               |
+  |-------------|--------------------------------------------------------|
+  | **24/12/12**(목) | 완벽 가이드 추천 목차 학습 |
+  | **24/12/13**(금) | PJT1_카운터 앱 실습, 04_LifeCycle (React 컴포넌트 생명주기 이해), 05_Context_API (전역 상태 관리 학습), Styled_components (선택), TailwindCSS (선택) |
+  | **24/12/14**(토) | PJT2_투두리스트 실습, 06_useReducer_hook, 07_Redux (선택) |
+  | **24/12/15**(일) | PJT3_감성일기장 실습 |
+  | **24/12/16**(월) | PJT3_감성일기장 실습 |
+  | **24/12/17**(화) | 10_Optimization (Vue의 computed 와 유사한 Hook, useMemo) |
+  | **24/12/18**(수) | 자율 학습 및 스터디 모임 |
 
 </details>
 
