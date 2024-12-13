@@ -59,3 +59,28 @@ npm install
   - id가 root인것을 랜더링
   - App 컴퍼런스 랜더링 -> App.jst import -> App컴포넌트
 - main페이지가 어떤 순서로, 로직으로 실행되고 있는지 확인 필요
+
+## 실습 준비
+- ESLint extensions에서 설치
+- public, assets에 있는 파일 삭제
+- App.css, index.css 안에 있는 코드 삭제
+- App.jsx App return 안에 있는 코드 삭제
+- .eslintrc.cjs
+  - "no-unused-vars": "off", 
+  - "react/prop-types" : "off",
+
+## React 컴포넌트
+  - 첫글자 대문자
+  - 함수로 생성
+    ```
+    function Header() {
+      return(
+        <header>
+    ```
+  - 자식 컴포넌트, 부모 컴포넌트
+  - src/components 생성
+    - Header.jsx 생성
+    - Header 함수 코드 옮기기
+    - export default Header; 작성
+    - App.jsx에서 import Header from 주소
+    
