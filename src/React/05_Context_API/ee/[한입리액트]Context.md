@@ -1,4 +1,4 @@
-# 라이프사이클
+# Context
 ## 목차
 - [[11.1] Context란](#111-context란)
 - [[11.2] Context 사용하기](#112-context-사용하기)
