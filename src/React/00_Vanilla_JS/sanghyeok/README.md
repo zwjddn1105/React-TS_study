@@ -132,3 +132,18 @@ export default function Section({ title, children, ...props(식별자) }) {
   - 컴포넌트 내에서 사용되는 이미지는 일반적으로 src/폴더에 저장되어야함
 
 ## (78) 사용자 입력 & 양방향 바인딩
+- 양방향 바인딩 : 입력값의 변화에 반응하고 변경된 값을 다시 입력값에 전달하는 방식
+
+## (81) State(상태) 끌어올리기
+- 상태를 제어할 때 가장 가까운 부모 컴포넌트에서 함 -> 이 컴포넌트가 해당 정보를 필요로 하는 두 컴포넌트 모두에 대해 접근이 가능하기 때문
+```jsx
+import { useState } from 'react'
+
+function App() {
+  const [activePlayer, setActivePlayer] = useState('X')
+
+  function handleSelectSquare() {
+    setActivePlayer((curActivePlayer) => curActivePlayer === 'X' ? 'O ' : 'X' )
+  }
+}
+```
