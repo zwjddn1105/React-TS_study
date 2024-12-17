@@ -13,15 +13,17 @@
 
 **기능 구현**
 - [최신 순/오래된 순 정렬](#최신-순오래된-순-정렬)
-
-
+- [`Date` 객체 정렬 시 숫자 타입으로 형변환](#date-객체-정렬-시-숫자-타입으로-형변환)
+- [`Date` 객체를 `input` 태그에 사용하려면?](#date-객체를-input-태그에-사용하려면)
+- [커스텀 컴포넌트 클릭 이벤트 구현](#커스텀-컴포넌트-클릭-이벤트-구현)
+- [New와 Edit 페이지에서 공통 컴포넌트 활용하기](#new와-edit-페이지에서-공통-컴포넌트-활용하기)
+- [작성 완료 버튼 이후 로직](#작성-완료-버튼-이후-로직)
+- [`navigate()` => `useEffect()`](#navigate--useeffect)
 
 ## React의 SPA 방식
 
 ### 페이지 라우팅
 - **정의**: 사용자가 특정 경로(URL)에 접속했을 때 해당 경로에 맞는 페이지를 렌더링하는 과정.
-
----
 
 ### Multi Page Application (MPA)
 
@@ -40,7 +42,6 @@
 - **서버 부하**:
   - 다수의 사용자 접속 시 서버에 큰 부하를 줌.
 
----
 ### Single Page Application (SPA)
 
 **등장 배경**
@@ -54,8 +55,6 @@
   - 네트워크 비용 절감 및 빠른 반응 속도.
 - **서버 부하 감소**:
   - 서버로의 요청을 최소화.
-
----
 
 ### React의 SPA 방식
 
@@ -85,8 +84,6 @@ React에서 페이지 라우팅을 구현하기 위해 사용하는 라이브러
 npm i react-router-dom
 ```
 
----
-
 ### `BrowserRouter` 설정
 
 ```jsx
@@ -97,7 +94,6 @@ npm i react-router-dom
 - `<App />` 컴포넌트를 `<BrowserRouter>`로 감싸면, 리액트 앱의 모든 컴포넌트가 브라우저의 주소를 사용할 수 있게 됨
 - 브라우저 주소(URL)의 변화를 감지하고 이에 따라 컴포넌트를 렌더링
 
----
 ### `Routes`/`Route`
 
 **Routes 컴포넌트**
@@ -111,7 +107,6 @@ npm i react-router-dom
     - 사용자가 잘못된 URL로 접근 시 Not Found 페이지를 렌더링
   - `element`: 해당 경로에서 렌더링할 컴포넌트 지정
 
---- 
 ### 실습
 
 1. `"/"`: 모든 일기를 조회하는 home 페이지
@@ -158,7 +153,6 @@ export default App
 <Link to="/diary">Diary</Link>
 ```
 
----
 
 ### `<a>` 태그
 
@@ -172,7 +166,7 @@ export default App
 ```jsx
 <a href="/경로">링크 텍스트</a>
 ```
----
+
 ### `useNavigate` 함수
 
 **특징**
@@ -224,7 +218,6 @@ const onClickButton = () => {
 - 예시
   - `~/search?q=검색어`
 
----
 ### URL Parameter 방식
 
 
@@ -257,7 +250,6 @@ const Diary = () => {
 
 export default Diary
 ```
----
 
 ### Query String 방식
 
@@ -309,7 +301,6 @@ body * {
 }
 ```
 
----
 ### 이미지 설정
 
 이미지 파일은 `src/assets` 폴더 아래에 위치
@@ -352,7 +343,6 @@ export function getEmotionImage(emotionId) {
 }
 ```
 
----
 
 ### 폰트 파일은 `public`폴더에 넣고, 이미지 파일은 `src/assets`폴더에 넣는 이유는?
 
@@ -382,7 +372,6 @@ npm run preview
 ```
 - 로컬 서버를 실행해 빌드된 결과물을 미리 확인.
 
----
 
 ### 레이아웃 설정
 
@@ -469,14 +458,12 @@ console.log(sortedValues); // [1, 2, 10, 21]
   2. `1 - 10 = -9` → 1이 앞에 위치.
   3. `10 - 2 = 8` → 2가 앞에 위치.
 
----
 
 ### `sort()` vs `toSorted()`
 
 - `sort()`: 값 반환하지 않고 정렬만 하는 함수
 - `toSorted()`: 원본 배열은 변경하지 않고 정렬된 새로운 배열을 반환
 
----
 
 ### `getSortedData()`
 
@@ -500,13 +487,15 @@ console.log(sortedValues); // [1, 2, 10, 21]
 **정렬 로직**
 - `sortType === "oldest"`:
   - `a.createdDate`가 더 작으면 앞으로 정렬(오래된 순).
+  - 작은 숫자가 앞에 오도록 정렬
 - `sortType === "latest"`:
   - `b.createdDate`가 더 작으면 앞으로 정렬(최신 순).
+  - 큰 숫자가 앞에 오도록 정렬
 
 
 <br>
 
-## 형변환
+## `Date` 객체 정렬 시 숫자 타입으로 형변환
 
 ```jsx
   const getSortedData = () => {
@@ -518,4 +507,182 @@ console.log(sortedValues); // [1, 2, 10, 21]
       }
     })
   }
+```
+`createdDate`가 문자열일 가능성을 고려해서 숫자 타입으로 변환하여 비교 연산이 의도한대로 동작하게 한다.
+
+
+<br>
+
+## `Date` 객체를 `input` 태그에 사용하려면?
+
+### 입력 필드에 날짜가 제대로 표시되지 않는 문제
+```jsx
+<input value={input.createdDate} type="date" />
+```
+- `createdDate`는 `Date` 객체
+
+- `<input type="date" />`에 `value`속성에는 날짜 값을 **문자열**로 제공해야 함
+
+### 왜 변환이 필요한가?
+**1. `Date` 객체와 문자열의 차이**
+- `Date` 객체는 프로그래밍에서 날짜를 다룰 때 유용한 다양한 메서드를 제공.
+- 그러나 HTML input 태그는 `Date` 객체를 인식하지 못하고, 문자열만 받아들임.
+
+**2. HTML5 `type="date"`의 요구 사항:**
+- `value` 속성에 ISO 8601 형식의 날짜 문자열(예: `2024-12-16`)만 허용.
+- `Date` 객체를 직접 전달하면 필드가 비어 있거나 오류 발생.
+
+
+### `getStrigedDate`(Date 객체를 문자열로 변환)
+
+```jsx
+const getStringedDate = (targetDate) => {
+  // 1. 년, 월, 일 추출
+  let year = targetDate.getFullYear()
+  let month = targetDate.getMonth() + 1
+  let date = targetDate.getDate()
+
+  // 2. 월, 일을 두 자리 형식으로 변환(1 -> 01)
+  if (month < 10) {
+    month = `0${month}`
+  }
+  if (date < 10) {
+    date = `0${date}`
+  }
+
+  // 3. "YYYY-MM-DD" 형식 반환
+  return `${year}-${month}-${date}`
+}
+```
+```jsx
+<input
+  value={getStringedDate(input.createdDate)}
+  type="date"
+/>
+```
+
+<br>
+
+## 커스텀 컴포넌트 클릭 이벤트 구현
+
+### 문제 상황
+
+- `EmotionItem`은 일반 HTML 요소가 아니라 React 컴포넌트
+- 일반적으로 HTML 요소(예: `<button>`)는 클릭 시 자동으로 이벤트를 발생시키지만, React 컴포넌트는 자동으로 이벤트를 발생시키지 않습니다.
+- 따라서 EmotionItem에 **클릭 이벤트를 수동으로 전달**해야 합니다.
+
+### 해결 방법
+
+- `EmotionItem` 컴포넌트에 `onClick`를 통해 클릭 이벤트를 전달
+- 이벤트 객체를 직접 생성해 onChangeInput 함수에서 사용할 수 있도록 맞춤화.
+
+```jsx
+{emotionList.map((item) => (
+  <EmotionItem onClick={() =>
+    onChangeInput({
+      target: {
+        name: "emotionId",
+        value: item.emotionId,
+      }
+    })}
+    key={item.emotionId}
+    {...item}
+    isSelected={item.emotionId === input.emotionId}
+  />
+))}
+```
+
+```jsx
+const EmotionItem = ({ emotionId, emotionName, isSelected, onClick }) => {
+  return (
+    <div
+      onClick={onClick} // 전달받은 클릭 이벤트 실행
+      className={`EmotionItem 
+      ${isSelected ? `EmotionItem_on_${emotionId}` : ""}`}>
+      <img
+        className="emotion_img"
+        src={getEmotionImage(emotionId)} />
+      <div className="emotion_name">
+        {emotionName}
+      </div>
+    </div>
+  )
+}
+```
+
+<br>
+
+## New와 Edit 페이지에서 공통 컴포넌트 활용하기
+### 글 작성 UI를 수정/생성에서 모두 사용하기
+- `Editor` 컴포넌트는 `New`페이지 뿐만 아니라 `Edit` 페이지에서도 사용하는 공통 컴포넌트
+- `New`에서는 CREATE를 해주고, `Edit`에서는 UPDATE를 해주어야 함
+- 따라서 페이지 역할에 따라 실행되어야 하는 함수가 달라짐
+
+### 방법: Props로 함수 전달
+
+- Editor 컴포넌트가 Context에서 `onCreate` 함수와 같은 상태 관리 함수에 직접 의존하지 않도록 설계.
+  - Context를 사용하는 경우, Editor 컴포넌트가 특정 로직에 강하게 결합됨.
+  - 결과적으로 **컴포넌트 재사용성이 낮아짐**.
+
+- Editor 컴포넌트는 **실행해야 할 함수**를 `Props`로 전달받아 처리.
+- `New`와 `Edit` 페이지에서 각각 적합한 함수(`onCreate`, `onUpdate`)를 Editor 컴포넌트에 전달.
+
+<br>
+
+
+## 작성 완료 버튼 이후 로직
+
+```jsx
+const onSubmit = (input) => {
+  onCreate(input.createdDate.getTime(), input.emotionId, input.content)
+  nav('/', { replace: true })
+}
+```
+
+- 작성 완료 후 **홈페이지로 돌아가기**
+- **`replace: true`** 옵션은 브라우저의 히스토리 스택을 조작하여 **"뒤로 가기"를 방지**
+
+**이유**
+
+사용자가 작성 완료 버튼을 누른 후
+- 이전 페이지로 돌아가 다시 데이터를 작성하거나
+- 중복된 요청을 보낼 가능성이 있음
+
+<br>
+
+## `navigate()` => `useEffect()`
+
+### 문제상황 - `navigate()`호출이 컴포넌트의 초기 렌더링 중에 실행
+
+```jsx
+const getCurrentDiaryItem = () => {
+  const currentDiaryItem = data.find((item) => String(item.id) === String(params.id))
+
+  if (!currentDiaryItem) {
+    window.alert("존재하지 않는 일기입니다")
+    nav('/', {replace: true})
+  }
+  return currentDiaryItem
+}
+```
+
+### 해결방법 - `useEffect()`
+
+React의 `useEffect` 훅을 사용하여 렌더링이 완료된 후 `navigate()`를 호출하면 문제가 해결
+
+```jsx
+const [currentDiaryItem, setCurrentDiaryItem] = useState()
+
+useEffect(()=> {
+  // 현재 일기 데이터를 찾음
+  const currentDiaryItem = data.find((item) => String(item.id) === String(params.id))
+
+  // 일기가 존재하지 않을 경우 알림과 함께 홈으로 이동
+  if (!currentDiaryItem) {  
+    window.alert("존재하지 않는 일기입니다")
+    nav('/', {replace: true})
+  }
+  // 존재하는 경우 상태에 저장
+  setCurrentDiaryItem(currentDiaryItem)
+}, [params.id])
 ```
