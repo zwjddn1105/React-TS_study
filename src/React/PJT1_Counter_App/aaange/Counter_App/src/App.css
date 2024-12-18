@@ -1,0 +1,16 @@
+body {
+    padding: 20px;
+}
+
+.App {
+    margin : 0 auto;
+    width: 400px;
+}
+
+.App > section {
+    background-color: rgb(245 245 245); /* 배경 색 */
+    border: 1px solid rgb(240 240 240); /* 테두리 선 */
+    border-radius: 5px; /* 테두리 라운딩 */
+    padding: 20px; 
+    margin-bottom: 10px; /* 컴포넌트 간격 */
+}
