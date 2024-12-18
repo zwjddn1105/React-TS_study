@@ -7,9 +7,9 @@
 
 - 페이지 라우팅 : 경로에 따라 알맞은 페이지를 렌더링 하는 과정
 
-![페이지 라우팅](image.png)
+![페이지 라우팅](./image.png)
 
-![페이지 라우팅 원리1](image-2.png)
+![페이지 라우팅 원리1](./image-2.png)
 
 1. 서버가 사용자에게 제공해야할 모든 html 페이지 가지고 있음
 2. 브라우저에서 페이지 요청
@@ -18,7 +18,7 @@
 - Multi Page Application(MPA) : 전통적인 방식. 애초에 서버가 여러개의 페이지를 가지고 있음
 - Server Side Rendering : 서버측에서 페이지를 미리 렌더링. 완성되어있는 페이지를 응답해줌
 
-  ![페이지 라우팅 원리2](image-3.png)!
+  ![페이지 라우팅 원리2](./image-3.png)!
   => **쾌적한 페이지 이동 제공이 어렵기 때문에 React.js는 이 방식을 따르지 않음**
 
   이전 페이지를 제거하고 새로운 페이지를 렌더링하는 과정에서 화면 깜빡임(새로고침)
@@ -144,7 +144,7 @@
       - assets에서 불러온 이미지들의 주소는 DATA URI(외부데이터를 문자열 형태로 브라우저 메모리에 캐싱하기 위해 사용되는 포멧)
       - 이렇게 불러온 이미지들은 자동으로 브라우저에 캐싱(저장)되어서 새로고침 하더라도 다시 불러오지 않도록 최적화
       - 일반 주소로 불러온 이미지는 새로고침 할 때마다 매번 새롭게 불러옴
-        ![Network 확인](image-4.png)
+        ![Network 확인](./image-4.png)
 
       - 이미지 파일이 너무 많을 경우 캐싱해두면 브라우저 용량 과부하 발생할수도 있음 -> 이 경우 public폴더에 보관하는게 나을 수도
       - 실습처럼 소수의 이미지일 경우 assets에 보관하는 것이 적합
@@ -263,8 +263,8 @@
     - 일기 삭제 이벤트 실행 -> nav함수 호출 즉시 페이지 이동. nav 함수 호출 이후 기존 페이지에 Hook들이 동작하지 않았음
   - v7 : nav 함수 비동기적으로 동작
     - nav 호출 이후에도 기존 페이지의 useEffect 등의 코드들이 실행
-      ![삭제 팝업](image-5.png)
-      ![존재하지 않는 일기입니다.](image-6.png)
+      ![삭제 팝업](./image-5.png)
+      ![존재하지 않는 일기입니다.](./image-6.png)
 
 </br>
 
@@ -293,7 +293,7 @@
   - 우리가 추가한 일기 데이터는 실제로는 React State에 보관됨(js 변수에 저장된 값)
   - 새로고침하면 state 다시 생성됨(초기화)
   - cf. SessionStorage와 LocalStorage 차이
-    ![세션, 로컬 스토리지](image-7.png)
+    ![세션, 로컬 스토리지](./image-7.png)
 
   - ```javascript
     // 데이터 저장
@@ -319,8 +319,8 @@
   - useEffect가 호출되기 전에(dispatch함수가 data state에 일기 데이터를 저장하기 전에) 다른 페이지 컴포넌트들이 미리 렌더링 된다면
   - 아래와 같이 오류 발생(수정하기, 작성 일기 확인인 페이지에서 새로고침)
   - useEffect가 완료되기 전에 dispatch가 완료되지 않아서 data state 초기값이 설정되지 않았을 때 Diary에서 하나의 일기 데이터를 불러오는 useDiary 커스텀 훅이 먼저 실행되었기 때문에 오류 발생(useDiary에서 data state가 초기값인 빈배열로 불러와졌기 때문)
-  ![새로고침 오류-edit](image-8.png)
-  ![새로고침 오류-diary](image-9.png)
+  ![새로고침 오류-edit](./image-8.png)
+  ![새로고침 오류-diary](./image-9.png)
 
   `=> 로딩 기능 만들기`
 
@@ -345,7 +345,7 @@
     <meta property="og:image" content="/thumbnail.png" />
     ```
 #### (4) 프로젝트 빌드
-  ![빌드](image-10.png)
+  ![빌드](./image-10.png)
 
 </br>
 
@@ -362,17 +362,17 @@
     ```bash
     vercel login
     ```
-    ![vercel login](image-11.png)
+    ![vercel login](./image-11.png)
   
-    ![with github](image-12.png)
+    ![with github](./image-12.png)
 
-    ![result](image-13.png)
+    ![result](./image-13.png)
 
 
     ### 트러블 슈팅(미해결)
     - 배포 후 링크에 따라 썸네일이 보이거나 안보임
     - 기본 도메인에서는 썸네일 안보임, 커스텀 도메인에서는 썸네일 보임
-    ![카톡 썸네일 안보임](image-14.png)
-    ![vercel 대쉬보드](image-15.png)
+    ![카톡 썸네일 안보임](./image-14.png)
+    ![vercel 대쉬보드](./image-15.png)
 
     - 이미지 경로를 절대경로로 변경했으나 해결되지 않음
