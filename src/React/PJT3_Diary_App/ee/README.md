@@ -19,6 +19,9 @@
 - [New와 Edit 페이지에서 공통 컴포넌트 활용하기](#new와-edit-페이지에서-공통-컴포넌트-활용하기)
 - [작성 완료 버튼 이후 로직](#작성-완료-버튼-이후-로직)
 - [`navigate()` => `useEffect()`](#navigate--useeffect)
+- [웹 스토리지 이용하기](#웹-스토리지-이용하기)
+- [배포 준비](#배포-준비)
+- [배포](#배포)
 
 ## React의 SPA 방식
 
@@ -686,3 +689,263 @@ useEffect(()=> {
   setCurrentDiaryItem(currentDiaryItem)
 }, [params.id])
 ```
+
+<br>
+
+## 웹 스토리지 이용하기
+
+### 웹 스토리지
+
+웹 브라우저 내장 DB로, 서버가 아닌 클라이언트에 데이터를 저장한다.
+
+**종류**
+
+**1. 로컬 스토리지 Session Storage**
+- 사이트 주소별로 데이터 보관
+- 사용자가 직접 삭제하기 전까지 데이터 보관
+
+
+**2. 세션 스트리지**
+- 브라우저 탭 별로 데이터를 보관
+- 탭이 종료되기 전에는 데이터 유지(새로고침)
+- 탭이 종료되거나 꺼지면 데이터 삭제
+
+
+### 로컬 스토리지 Local Storage
+
+```jsx
+localStorage.setItem(key, value) // 데이터 저장
+
+console.log(localStorage.getItem(key)) // 데이터 출력
+
+localStorage.removeItem(key) // 데이터 삭제
+```
+
+### 객체를 넘겨주려면?
+
+객체 형태의 값들은 문자열 형태로 변환해서 저장해주어야 함
+
+```jsx
+localStorage.setItem("person", JSON.stringify({ name : "이다이 "})) // 문자열 형태로 변환해서 데이터 저장
+
+console.log(JSON.parse(localStorage.getItem("person"))) // JSON 파일로 변환해서 출력
+```
+
+**주의사항**
+
+- `undefined`나 `none`값이 저장되어있으면 오류가 발생함
+
+
+### 세션 스토리지 Session Storage
+
+
+```jsx
+sessionStorage.setItem(key, value) // 데이터 쓰기
+
+sessionStorage.getItem(key, value) // 데이터 읽기
+
+sessionStorage.removeItem(key) // 데이터 삭제
+```
+
+### 실습
+
+**Reducer**
+
+상태가 변경될 때 마다 `localStorage`에 데이터를 저장한다.
+
+```jsx
+function reducer(state, action) {
+  let nextState;
+
+  switch (action.type) {
+    case "INIT": return action.data
+    case "CREATE": {
+      nextState = [action.data, ...state]
+      break
+    }
+    case "UPDATE": {
+      nextState = state.map((item) =>
+        String(item.id) === String(action.data.id) ? action.data : item
+      )
+      break
+    }
+    case "DELETE": {
+      nextState = state.filter((item) =>
+        String(item.id) !== String(action.id)
+      )
+      break
+    }
+    default:
+      return state
+  }
+  localStorage.setItem("diary", JSON.stringify(nextState))
+  return nextState
+}
+```
+- `INIT` : 초기 상태를 설정
+
+**App 컴포넌트**
+
+```jsx
+function App() {
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 관리
+  const [data, dispatch] = useReducer(reducer, []); // 상태 관리
+  const idRef = useRef(0); // ID 관리
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("diary"); // 로컬스토리지에서 데이터 가져오기
+    if (!storedData) {
+      setIsLoading(false);
+      return;
+    }
+    const parsedData = JSON.parse(storedData);
+    if (!Array.isArray(parsedData)) {
+      setIsLoading(false);
+      return;
+    }
+
+    let maxId = 0;
+    parsedData.forEach((item) => {
+      if (Number(item.id) > maxId) {
+        maxId = Number(item.id);
+      }
+    });
+
+    idRef.current = maxId + 1;
+
+    dispatch({
+      type: "INIT",
+      data: parsedData,
+    });
+
+    setIsLoading(false); // 로딩 완료
+  }, []);
+```
+- 로컬스토리지에서 데이터 불러오기
+- 최대 ID 계산
+  - 기존 데이터의 최대 ID를 계산해서 `idRef`를 업데이트한다.
+- `useEffect`
+  - 컴포넌트가 처음 렌더링될 때만 실행하낟.
+  - 데이터가 로드될 때까지 `isLoading` 상태를 활용해 로딩 메시지를 표시한다.
+
+### 전체 동작 흐름
+
+1. 컴포넌트 초기화
+  - `useEffect`로 `localStorage`에서 데이터를 불러와 상태 초기화
+2. 데이터 추가/수정/삭제
+  - `dispatch`를 통해 상태를 변경
+  - 변경된 상태는 `localStorage`에 저장됨
+3. `useContext`로 상태 데이터를 전달하여 UI 컴포넌트에서 사용
+
+
+<br>
+
+## 배포 준비
+
+### 1. 페이지 타이틀
+웹 브라우저 탭에 표시되는 타이틀
+
+**설정 방법**
+
+`index.html`에서 `<title>`을 설정해주면 됨
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>감정 일기장</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+**페이지 별로 각각 다른 타이틀을 설정하고 싶다면?**
+
+JS를 이용해 React 컴포넌트 내부에서 `index.html` title값을 페이지를 이동할 때마다 바꾸도록 설정해주어야 함
+
+```jsx
+// hooks/newPageTitle.jsx
+
+import { useEffect } from "react"
+
+const usePageTitle = (title) => {
+  useEffect(() => {
+  const $title = document.getElementsByTagName("title")[0]
+  $title.innerText = title
+}, [title])
+}
+
+export default usePageTitle
+```
+
+```jsx
+// New.jsx
+
+import usePageTitle from "../hooks/usePageTitle"
+
+  usePageTitle("새 일기 쓰기")
+```
+
+```jsx
+// Diary.jsx
+import usePageTitle from "../hooks/usePageTitle"
+
+  usePageTitle(`${params.id}번 일기`)
+```
+
+### 2. Favicon
+브라우저 탭에 표시되는 작은 아이콘
+
+
+**설정 방법**
+
+설정하고 싶은 아이콘 파일을 `public`디렉토리 내에 넣고 `index.html`에서 수정한다.
+
+```html
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+```
+
+### 3. 오픈 그래프
+웹 사이트의 링크를 공유할 때 썸네일, 제목 등의 정보를 노출하는 것
+
+**설정 방법**
+설정하고 싶은 썸네일 이미지를 `public`디렉토리 내에 넣고 `index.html`에서 `<meta>`태그로 추가한다.
+
+```html
+    <meta property="og:title" content="감정 일기장">
+    <meta property="og:description" content="나만의 작은 감정 일기장">
+    <meta property="og:image" content="/thumbnail.png">
+```
+### 4. 프로젝트 빌드
+```bash
+npm run build
+```
+
+<br>
+
+
+## 배포
+
+### Vercel
+
+
+프론트엔드 배포를 간소화하는 클라우드 플랫폼으로, 특히 Next.js와 React.js에 최적화
+
+### 실습
+
+```bash
+npm i -g vercel
+vercel login
+vercel
+vercel --prod
+```
+
+### 배포 성공 🎉
+
+https://emotion-diary-ten-eosin.vercel.app/
