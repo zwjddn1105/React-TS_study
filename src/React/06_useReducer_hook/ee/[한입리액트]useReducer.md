@@ -117,7 +117,7 @@ function App() {
     dispatch({
       type: "CREATE",
       data: {
-        id: idRef.current++
+        id: idRef.current++,
         isDone: false,
         content: content,
         date: new Date().getTime(),
