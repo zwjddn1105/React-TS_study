@@ -3,39 +3,37 @@
 ## 5.1 실습 준비하기
 
 - main.jsx 내 StrictMode태그
-    - 개발모드로 리액트를 실행하고있을 때 우리가 작성한 코드에 혹시나 잠재적인 문제가 있는지 내부적으로 검사해서 경고해주는 도구
-    - 초심자는 별로 안필요함, 혼란유발
+  - 개발모드로 리액트를 실행하고있을 때 우리가 작성한 코드에 혹시나 잠재적인 문제가 있는지 내부적으로 검사해서 경고해주는 도구
+  - 초심자는 별로 안필요함, 혼란유발
 - ESLint 설치
-    - 작성한 코드를 정적으로 검사해 혹시나 오류가 발생할만한 코드가있으면 경고를 띄워줌
-    - eslintrc.cjs파일의 rules에 끝에 2줄 추가
-    - no-unused-vars:  코드상에 실제로 사용하지 않는 변수가 있을 때 이를 오류로 알려줌, 혼란을 방지하려고 끔
-    - react/prop-types: 리액트를 다 배우고 조금더 안전하게 사용할 수 있게 하는 옵션, 혼란방지용 off
-    
-    ```
-    rules: {
-      ...js.configs.recommended.rules,
-      ...react.configs.recommended.rules,
-      ...react.configs["jsx-runtime"].rules,
-      ...reactHooks.configs.recommended.rules,
-      "react/jsx-no-target-blank": "off",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
-      "no-unused-vars": "off",
-      "react/prop-types": "off",
-    },
-    ```
-    
+  - 작성한 코드를 정적으로 검사해 혹시나 오류가 발생할만한 코드가있으면 경고를 띄워줌
+  - eslintrc.cjs파일의 rules에 끝에 2줄 추가
+  - no-unused-vars: 코드상에 실제로 사용하지 않는 변수가 있을 때 이를 오류로 알려줌, 혼란을 방지하려고 끔
+  - react/prop-types: 리액트를 다 배우고 조금더 안전하게 사용할 수 있게 하는 옵션, 혼란방지용 off
+  ```cjs
+  rules: {
+    ...js.configs.recommended.rules,
+    ...react.configs.recommended.rules,
+    ...react.configs["jsx-runtime"].rules,
+    ...reactHooks.configs.recommended.rules,
+    "react/jsx-no-target-blank": "off",
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+  },
+  ```
 
 ## 5.2 React 컴포넌트
 
 - 함수로 만든 것을 함수컴포넌트라고 함
-    - 이 함수컴포넌트들은 첫글자가 반드시 대문자가 되어야 한다.
-    - 리액트에서는 첫글자가 대문자여야 얘를 컴포넌트라고 인정함
+  - 이 함수컴포넌트들은 첫글자가 반드시 대문자가 되어야 한다.
+  - 리액트에서는 첫글자가 대문자여야 얘를 컴포넌트라고 인정함
 - App.jsx
 
-```
+```jsx
 import "./App.css";
 import Header from "./components/Header"; // jsx생략가능
 import Main from "./components/Main";
@@ -56,7 +54,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ## 5.3 JSX로 UI 표현하기
@@ -65,16 +62,16 @@ export default App;
 - 리액트에서는 JSX 문법을 사용하므로 적법하다고 판단한다.
 - JSX: 확정된 자바스크립트 문법 (JS Extensions)
 - JSX의 중괄호에는 JS표현식만 넣을 수 있다.
-    - 삼항연산자도 가능
-    - 숫자나 문자로 표현되는 값이면 중괄호 안에 다 넣을 수 있다.
-    - 한줄로 평가될 수 없으니 if, for문 같은 것 불가능하다.
-    - JS 표현식인 것
-        - 그냥 값(리터럴)
-        - 변수이름
-        - 연산식
+  - 삼항연산자도 가능
+  - 숫자나 문자로 표현되는 값이면 중괄호 안에 다 넣을 수 있다.
+  - 한줄로 평가될 수 없으니 if, for문 같은 것 불가능하다.
+  - JS 표현식인 것
+    - 그냥 값(리터럴)
+    - 변수이름
+    - 연산식
 - 예시코드 Main.jsx
 
-```
+```jsx
 // JSX 주의사항
 // 1. 중괄호 내부에는 자바스크립트 표현식만 넣을 수 있다.
 // 2. 숫자, 문자열, 배열 값만 렌더링 된다.
@@ -112,22 +109,21 @@ const Main = () => {
 };
 
 export default Main;
-
 ```
 
 ## 5.4 Props로 데이터 전달하기
 
 - 만약 리액트로 naver의 헤더부분을 구현한다면
-    - SearchBar 컴포넌트
-    - Button 컴포넌트 여러개… 반복렌더링(메일, 카페, 블로그 …)
-    - text={메일}, img={mail.png}… 이런 것들처럼 값을 전달하는 것을 Props라 한다. **Properties**의 줄임말이라고 생각
-    - Props는 부모컴포넌트로부터 자식으로만 전달할 수 있다. 자식에서 부모로는 불가능하다
+  - SearchBar 컴포넌트
+  - Button 컴포넌트 여러개… 반복렌더링(메일, 카페, 블로그 …)
+  - text={메일}, img={mail.png}… 이런 것들처럼 값을 전달하는 것을 Props라 한다. **Properties**의 줄임말이라고 생각
+  - Props는 부모컴포넌트로부터 자식으로만 전달할 수 있다. 자식에서 부모로는 불가능하다
 
 ### 예시코드
 
 - Button.jsx
 
-```
+```jsx
 const Button = ({ text, color = "black", children }) => {
   return (
     <button style={{ color: color }}>
@@ -144,12 +140,11 @@ const Button = ({ text, color = "black", children }) => {
 // 위에 color=black으로 디폴트값을 직접설정해 주는 것이 jsx권장방식
 
 export default Button;
-
 ```
 
 - App.jsx
 
-```
+```jsx
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -178,7 +173,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ## 5.5 이벤트 처리하기(이벤트 핸들링)
@@ -187,57 +181,56 @@ export default App;
 - 핸들링(다루다, 취급하다, 처리하다)
 - 즉, 이벤트가 발생했을 때 그것을 처리하는 것을 의미 ex.버튼 클릭시 경고창 노출
 - onClick 속성으로함
-    - 만약 함수를 따로 만들고 onClick내부에 함수만 전달할때는 호출을하지않고 함수이름만 써서 한다.
+  - 만약 함수를 따로 만들고 onClick내부에 함수만 전달할때는 호출을하지않고 함수이름만 써서 한다.
 - onMouseEnter
-    - 마우스를 올려놓기만 해도 동작함
+  - 마우스를 올려놓기만 해도 동작함
 - 합성이벤트(Synthetic Base Event)
-    - 모든 웹 브라우저의 이벤트 객체를 하나로 통일한 형태
-    - 브라우저마다 이벤트 객체가 서로 다르다.(브라우저별 스펙이 달라서)
-    - 이를 Cross Browsing Issue라고 함
-    - 이걸 해결해 주는것이 합성이벤트(모든 브라우저에서의 이벤트 객체를 하나로 통일한 형태)
-    
-    ```
-    // Button.jsx
-    const Button = ({ text, color = "black", children }) => {
-      // 이벤트 객체
-      const onClickButton = (e) => {
-        console.log(e); // 합성이벤트 객체
-        console.log(text);
-      };
-      return (
-        <button
-          // onMouseEnter={onClickButton}
-          onClick={onClickButton}
-          style={{ color: color }}
-        >
-          {text} - {color.toUpperCase()}
-          {children}
-        </button>
-      );
+
+  - 모든 웹 브라우저의 이벤트 객체를 하나로 통일한 형태
+  - 브라우저마다 이벤트 객체가 서로 다르다.(브라우저별 스펙이 달라서)
+  - 이를 Cross Browsing Issue라고 함
+  - 이걸 해결해 주는것이 합성이벤트(모든 브라우저에서의 이벤트 객체를 하나로 통일한 형태)
+
+  ```jsx
+  // Button.jsx
+  const Button = ({ text, color = "black", children }) => {
+    // 이벤트 객체
+    const onClickButton = (e) => {
+      console.log(e); // 합성이벤트 객체
+      console.log(text);
     };
-    
-    export default Button;
-    
-    ```
-    
+    return (
+      <button
+        // onMouseEnter={onClickButton}
+        onClick={onClickButton}
+        style={{ color: color }}
+      >
+        {text} - {color.toUpperCase()}
+        {children}
+      </button>
+    );
+  };
+
+  export default Button;
+  ```
 
 ## 5.6 State로 상태관리하기
 
 - State = 상태, 현재 가지고 있는 형태나 모양을 정의, 변화할 수 있는 동적인 값
 - State의 값에 따라 렌더링 되는 UI가 결정된다.
 - 컴포넌트가 다시 렌더링 되는 상황을 리액트에서는
-    - 리 렌더(Re-Render)
-    - 리 렌더링(Re-Rendering)
-    - 이라고 부른다.
+  - 리 렌더(Re-Render)
+  - 리 렌더링(Re-Rendering)
+  - 이라고 부른다.
 - 하나의 컴포넌트에 여러개의 state를 만드는 것도 가능하다.
-    - 현재 전구의 점등상태
-    - 현재 전구의 고장유무
-    - 현재 전구의 더러움유무
-    - etc…
+  - 현재 전구의 점등상태
+  - 현재 전구의 고장유무
+  - 현재 전구의 더러움유무
+  - etc…
 - 만약 useState를 사용하지 않고 일반 자바스크립트 문법으로 코드를 작성하게 될 경우에는 컴포넌트가 리렌더링 되지 않아서 아무런 변화가 일어나지 않는다
 - 왜냐하면 리액트의 컴포넌트는 State의 변화에 따라서 리렌더링 되기 때문!!
 
-```
+```jsx
 // App.jsx
 import "./App.css";
 import { useState } from "react";
@@ -275,7 +268,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ## 5.7 State와 Props로 전달하기
@@ -305,7 +297,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ```jsx
@@ -333,7 +324,6 @@ const Bulb = () => {
 };
 
 export default Bulb;
-
 ```
 
 ```jsx
@@ -357,7 +347,6 @@ const Counter = () => {
 };
 
 export default Counter;
-
 ```
 
 ## 5.8 State로 사용자 입력 관리하기 1
@@ -365,7 +354,7 @@ export default Counter;
 - input태그의 placeholder → 아무것도 입력안했을 때 나오는 이름
 - 이벤트객체의 target 프로퍼티의 value값이 input태그에 입력한 값
 
-```
+```jsx
 // Register.jsx
 import { useState } from "react";
 // 간단한 회원가입 폼
@@ -421,14 +410,13 @@ const Register = () => {
 };
 
 export default Register;
-
 ```
 
 ## 5.9 State로 사용자 입력 관리하기 2
 
 - 위의 코드가 비효율적으로 보임, 이를 효율적으로 개선하는 작업을 해본다.
 
-```
+```jsx
 // Register.jsx
 import { useState } from "react";
 
@@ -512,7 +500,6 @@ const Register = () => {
 };
 
 export default Register;
-
 ```
 
 ## 5.10 useRef로 컴포넌트의 변수 생성하기
@@ -521,11 +508,11 @@ export default Register;
 - 특정 DOM 요소에 접근해서 요소를 조작할 수 있다.
 - useRef와 useState는 컴포넌트 내부에서 사용할 변수를 생성한다는 점에서는 동일하나 useRef로 생성한 변수는 값이 바뀌더라도 리렌더링을 유발하지 않는다는 차이가 있다.
 
-| useRef | useState |
-| --- | --- |
-| Reference 객체를 생성 | State를 생성 |
-| 컴포넌트 내부의 변수로 활용 가능 | 컴포넌트 내부의 변수로 활용 가능 |
-| 어떤 경우에도 리렌더링을 유발하지 않음 | 값이 변경되면 컴포넌트 리렌더링 |
+| useRef                                 | useState                         |
+| -------------------------------------- | -------------------------------- |
+| Reference 객체를 생성                  | State를 생성                     |
+| 컴포넌트 내부의 변수로 활용 가능       | 컴포넌트 내부의 변수로 활용 가능 |
+| 어떤 경우에도 리렌더링을 유발하지 않음 | 값이 변경되면 컴포넌트 리렌더링  |
 
 ```jsx
 // Register.jsx
@@ -606,7 +593,6 @@ const Register = () => {
 };
 
 export default Register;
-
 ```
 
 ## 5.11 React Hooks(낚아채다!)
@@ -616,13 +602,13 @@ export default Register;
 - Function 컴포넌트는 이 당시에 UI렌더링만 할 수 있음
 - 그러나 Class 컴포넌트는 문법이 굉장히 복잡했다.
 - 그래서 React 개발팀들이 Function 컴포넌트에서도 Class 컴포넌트의 기능을 이용할 수 있게 하는 방법이 없을까? 고민하게됨 (낚아채듯 Class 컴포넌트의 기능을 사용할 수 있게함 → 이를 React Hooks라 한다)
-    - 예시로는 useState, useRef가 Hook이었음
-    - useEffect, useReducer etc…
-    - React Hooks에는 접두사 use가 붙는다.
+  - 예시로는 useState, useRef가 Hook이었음
+  - useEffect, useReducer etc…
+  - React Hooks에는 접두사 use가 붙는다.
 - 이는 함수컴포넌트 내부에서만 호출할 수 있고 조건문,반복문 내부에서는 호출이 불가능하다.
 - use라는 접두사를 이용하여 나만의 Hook(Custom Hook)도 제작가능
 
-```
+```jsx
 // HookExam.jsx
 import { useState } from "react";
 
@@ -656,5 +642,4 @@ const HookExam = () => {
 };
 
 export default HookExam;
-
 ```
