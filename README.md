@@ -32,7 +32,7 @@
   1. 리액트 공식문서 읽기
       - https://ko.react.dev/learn 한글 ver
       - https://react.dev/learn 영어 ver
-      - 어떤 걸로 볼 지는 각자 알아서
+      - 어떤 걸로 볼 지는 각자 알아서 (Quick start)
   2. 타입스크립트 강의 듣기
       - 코딩앙마 https://www.youtube.com/playlist?list=PLZKTXPmaJk8KhKQ_BILr1JKCJbR0EGlx0 다 보기
 
