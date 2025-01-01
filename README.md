@@ -20,15 +20,21 @@
   - 【한글자막】 React 완벽 가이드 2024 with React Router & Redux
 
 ### 2차: 자기소개 페이지 제작
-- 기간: 1차 종료 후 ~ 2학기 팀 빌딩 자기소개 시간 전까지.
+- 기간: 1차 종료 후 ~ 12/30(월)
 - 내용:
   - 자기소개 페이지 제작 (React, Vue, HTML+CSS+JS, Django+HTML, PPT 등 자유 선택).
   - GitHub Pages를 이용한 배포.
   - EC2 + Docker를 활용한 배포 실습 가능(희망자에 한해 스터디장이 지원).
 
 ### 3차: TypeScript 강의 완강
-- 기간: 12월 4주차 ~ 12월 31일.
-- 강의: 추천받아 선정 예정.
+- 기간: 12/31(화) ~ ing
+- 내용:
+  1. 리액트 공식문서 읽기
+      - https://ko.react.dev/learn 한글 ver
+      - https://react.dev/learn 영어 ver
+      - 어떤 걸로 볼 지는 각자 알아서
+  2. 타입스크립트 강의 듣기
+      - 코딩앙마 https://www.youtube.com/playlist?list=PLZKTXPmaJk8KhKQ_BILr1JKCJbR0EGlx0 다 보기
 
 ## 📚 진행 과정
 
