@@ -30,11 +30,7 @@
 - 기간: 12/31(화) ~ ing
 - 내용:
   1. 리액트 공식문서 읽기
-      - https://ko.react.dev/learn 한글 ver
-      - https://react.dev/learn 영어 ver
-      - 어떤 걸로 볼 지는 각자 알아서 (Quick start)
   2. 타입스크립트 강의 듣기
-      - 코딩앙마 https://www.youtube.com/playlist?list=PLZKTXPmaJk8KhKQ_BILr1JKCJbR0EGlx0 다 보기
 
 ## 📚 진행 과정
 
@@ -111,7 +107,7 @@
 </details>
 
 <details>
-  <summary>03주차 : ✅ 24/12/19 ~ 24/12/22 => 자기소개 페이지 제작 및 배포</summary>
+  <summary>03주차 : ✅ 24/12/19 ~ 24/12/30 => 자기소개 페이지 제작 및 배포</summary>
 
   > 학습 내용
   - 페이지 제작
@@ -121,15 +117,22 @@
 </details>
 
 <details>
-  <summary>04주차 : ✅ 24/12/23 ~ 24/12/24 => TypeScript</summary>
+  <summary>04주차 : ✅ 24/12/31 ~ 25/01/02 => React 공식 문서, TypeScript 강의</summary>
 
   > 학습 내용
-  - 추후 추가
+  1. 리액트 공식문서 읽기
+      - https://ko.react.dev/learn 한글 ver
+      - https://react.dev/learn 영어 ver
+      - 어떤 걸로 볼 지는 각자 알아서 (Quick start)
+      - src/React/77_Official_docs/{본인 이름}/ 에 정리
+  2. 타입스크립트 강의 듣기
+      - 코딩앙마 https://www.youtube.com/playlist?list=PLZKTXPmaJk8KhKQ_BILr1JKCJbR0EGlx0 다 보기
+      - src/TypeScript/{본인 이름}/ 에 정리
 
 </details>
 
 <details>
-  <summary>05주차 : ✅ 24/12/25 ~ 24/12/31 => TypeScript</summary>
+  <summary>05주차 : ✅ 25/01/03 ~ 24/01/08 => TypeScript</summary>
 
   > 학습 내용
   - 추후 추가
