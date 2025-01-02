@@ -28,7 +28,7 @@ console.log(a*b)  // error
 ```
 이렇게 숫자면 숫자, 문자열이면 문자열이라고 타입을 선언해주어서 계산이 작동되지 못하게 하거나, 컴파일 전에 오류 메시지를 띄우게 한다.
 
-## TypeScript 실습 예시
+## [2강] TypeScript 실습 예시
 
 ### (1). 기본 자료형
 
@@ -103,7 +103,7 @@ let a: null = null;
 let b: undefined = undefined;
 ```
 
-## 인터페이스 (interface)
+## 3강 인터페이스 (interface)
 
 ### (1). 인터페이스 기본
 
@@ -223,5 +223,169 @@ interface Toy {
 
 interface ToyCar extends Car, Toy {
   price: number;
+}
+```
+
+## 4강 함수 (Function)
+
+### (1). 함수 기본형
+
+```ts
+function add(a: number, b: number): number => a + b;
+
+// optional parameter (선택적 매개변수)
+function hello(name?: string) {
+  return `Hello, ${name || 'world'}`;
+}
+
+// 기본 매개변수 작성으로 동일하게 사용 가능
+function hello2(name = 'world') {
+  return `Hello, ${name}`;
+}
+
+const result = hello();
+const result2 = hello('John');
+// const result3 = hello(1); // error
+```
+
+### (2). 함수 주의사항
+
+```ts
+// 필수 매개변수보다 선택적 매개변수가 먼저 나오면 안된다!!
+// 앞에 쓰려면 다음과 같이 사용한다.
+function hello(age: number | undefined, name: string): string {
+  if (age !== undefined) {
+    return `Hello, ${name}, you are ${age} years old`;
+  } else {
+    return `Hello, ${name}`;
+  }
+}
+
+console.log(hello(30, "Sam"));
+console.log(hello(undefined, "Sam"));
+```
+
+### (3). Rest Parameter
+
+```ts
+function add(...nums: number[]): number {
+  return nums.reduce((result, num) => result + num, 0);
+}
+
+add(1, 2, 3); // 6
+add(1, 2, 3, 4, 5); // 15
+```
+
+### (4). this 사용법
+
+```ts
+interface User {
+  name: string;
+}
+
+const Sam: User = {name: 'Sam'}
+
+// this의 타입을 지정해줄 수 있다.
+function showName(this: User, age: number, gender: 'm' | 'f') {
+  console.log(this.name, age, gender)
+}
+
+const a = showName.bind(Sam)
+a(30, 'm'); // Sam
+```
+
+### (5). Function Overloading
+
+-  함수 오버로딩을 사용하면 함수의 매개변수와 반환값의 타입을 다르게 설정할 수 있다.
+
+```ts
+interface User {
+  name: string;
+  age: number;
+}
+
+function join(name: string, age: string): string;
+function join(name: string, age: number): User;
+function join(name: string, age: number | string): User | string {
+  if (typeof age === 'number') {
+    return {name, age};
+  } else {
+    return `${name} ${age}`;
+  }
+}
+```
+
+## 5강 리터럴, 유니온/교차 타입
+
+### (1). 리터럴 타입 (Literal Type)
+
+- 리터럴 타입은 문자열, 숫자, 불리언 등의 값 자체를 타입으로 지정할 수 있다.
+
+```ts
+// userName1처럼 정해진 스트링 값을 가진 것을 문자열 리터럴 타입이라고 함.
+const userName1 = "Bob";
+let userName2: string | number = "Tom";
+userName2 = 3;
+
+type Job = "police" | "developer" | "teacher";
+
+interface User {
+  name: string;
+  job: Job;
+}
+
+const user: User = {
+  name: "Bob",
+  job: "developer"
+}
+```
+
+### (2). 유니온 타입 (Union Type)
+
+```ts
+interface Car {
+  name: "car";
+  color: string;
+  start(): void;
+}
+
+interface Mobile {
+  name: "mobile";
+  color: string;
+  call(): void;
+}
+
+// gift: Car | Mobile => Union Type
+// 식별 가능한 유니온 타입
+function getGift(gift: Car | Mobile) {
+  console.log(gift.color);
+  if (gift.name === "car") {
+    gift.start();
+  } else {
+    gift.call();
+  }
+  // 검사할 항목이 많아지면 switch 문을 사용.
+}
+```
+
+### (3). 교차 타입 (Intersection Type)
+
+```ts
+interface Car {
+  name: string;
+  start(): void;
+}
+
+interface Toy {
+  name: string;
+  color: string;
+  price: number;
+}
+
+const toyCar: Toy & Car = {
+  name: "toyCar",
+  start() {},
+  color: "blue",
+  price: 1000,
 }
 ```
