@@ -476,3 +476,87 @@ class Bmw extends Car {
 
 const z4 = new Bmw('black');
 ```
+
+## 7강 제네릭 (Generic)
+
+### (1). 제네릭 기본
+
+- 제네릭은 타입을 파라미터로 받아서 사용하는 것이다.
+- <T>는 타입 파라미터로, 함수를 호출할 때 타입을 지정해주면 된다.
+
+```ts
+function getSize<T>(arr: T[]): number {
+  return arr.length;
+}
+
+const arr1 = [1, 2, 3];
+getSize<number | string>(arr1);  // 3
+
+const arr2 = ['a', 'b', 'c'];
+getSize<string>(arr2);  // 3
+
+const arr3 = [false, true, false];
+getSize(arr3);  // 3
+
+const arr4 = [{}, {}, { name: 'Sam'}];
+getSize(arr4);  // 3
+```
+
+```ts
+interface Mobile<T> {
+  name: string;
+  price: number;
+  option: T;
+}
+
+const m1: Mobile<{ color: string; coupon: boolean }> = {
+  name: 's24u',
+  price: 1000,
+  option: {
+    color: 'red',
+    coupon: false,
+  }
+}
+
+const m2: Mobile<string> = {
+  name: 's24u',
+  price: 1000,
+  option: 'good'
+}
+```
+
+```ts
+interface User {
+  name: string;
+  age: number;
+}
+
+interface Car {
+  name: string;
+  color: string;
+}
+
+interface Book {
+  price: number;
+}
+
+const user: User = {
+  name: 'Sam',
+  age: 30,
+}
+const car: Car = {
+  name: 'Benz',
+  color: 'black',
+}
+const book: Book = {
+  price: 1000,
+}
+
+function showName<T extends { name: string }>(data: T): string {
+  return data.name;
+}
+
+showName(user);   // Sam
+showName(car);    // Benz
+showName(book);   // error
+```
