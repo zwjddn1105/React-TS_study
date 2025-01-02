@@ -560,3 +560,179 @@ showName(user);   // Sam
 showName(car);    // Benz
 showName(book);   // error
 ```
+
+## 8강 유틸리티 타입 (Utility Types)
+
+### (1). keyof
+
+- keyof는 객체의 키를 타입으로 가져온다.
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  gender: 'm' | 'f';
+}
+
+type UserKey = keyof User;  // 'id' | 'name' | 'age' | '
+
+const uk: UserKey = 'name';
+```
+
+### (2). Partial
+
+- Partial은 객체의 모든 속성을 선택적으로 만든다.
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  gender: 'm' | 'f';
+}
+
+let admin: Partial<User> = {
+  id: 1,
+  name: 'Sam',
+}
+```
+
+### (3). Required
+
+- Required는 객체의 모든 속성을 필수로 만든다.
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age?: number;
+}
+
+// Required를 쓰면서 age도 필수 property로 만들어준다.
+let admin: Required<User> = {
+  id: 1,
+  name: 'Sam',
+  age: 30,
+}
+```
+
+###  (4). Readonly
+
+- Readonly는 객체의 모든 속성을 읽기 전용으로 만든다.
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age?: number;
+}
+
+let admin: Readonly<User> = {
+  id: 1,
+  name: 'Sam',
+}
+
+admin.id = 4; // error
+```
+
+### (5). Record<K,T>
+
+- Record는 객체의 속성을 다른 타입으로 매핑한다.
+- K는 키의 타입, T는 값의 타입이다.
+
+```ts
+interface Score {
+  '1': 'A' | 'B' | 'C' | 'D';
+  '2': 'A' | 'B' | 'C' | 'D';
+  '3': 'A' | 'B' | 'C' | 'D';
+  '4': 'A' | 'B' | 'C' | 'D';
+}
+
+const score: Score = {
+  '1': 'A',
+  '2': 'B',
+  '3': 'C',
+  '4': 'D',
+}
+```
+
+위의 코드를 Record를 사용하면 아래와 같이 작성할 수 있다.
+
+```ts
+const score: Record<'1' | '2' | '3' | '4', 'A' | 'B' | 'C' | 'D'> = {
+  '1': 'A',
+  '2': 'B',
+  '3': 'C',
+  '4': 'D',
+}
+
+// ------------------------------------------------
+// 위와 동일
+
+type Grade = '1' | '2' | '3' | '4';
+type Score = 'A' | 'B' | 'C' | 'D';
+
+const score: Record<Grade, Score> = {
+  '1': 'A',
+  '2': 'B',
+  '3': 'C',
+  '4': 'D',
+}
+```
+
+### (6). Pick<T,K>
+
+- Pick은 객체에서 일부 속성을 선택한다.
+- T는 객체 타입, K는 선택할 속성의 키 타입이다.
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  gender: 'M' | 'F';
+}
+
+const admin: Pick<User, 'id' | 'name'> = {
+  id: 1,
+  name: 'Sam',
+}
+```
+
+### (7). Omit<T,K>
+
+- Omit은 객체에서 일부 속성을 제외한다.
+- T는 객체 타입, K는 제외할 속성의 키 타입이다.
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  gender: 'M' | 'F';
+}
+
+const admin: Omit<User, 'age' | 'gender'> = {
+  id: 1,
+  name: 'Sam',
+}
+```
+
+### (8). Exclude<T1,T2>
+
+- Exclude는 T1에서 T2를 제외한 타입을 반환한다.
+
+```ts
+type T1 = string | number;
+type T2 = Exclude<T1, number>;  // string
+```
+
+### (9). NonNullable<Type>
+
+- NonNullable은 null과 undefined를 제외한 타입을 반환한다.
+
+```ts
+type T1 = string | null | undefined | void;
+type T2 = NonNullable<T1>;  // string
+```
