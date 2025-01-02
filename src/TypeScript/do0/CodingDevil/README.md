@@ -1,4 +1,26 @@
-# TypeScript란?
+# 목차
+
+[1강 TypeScript 소개](#1강-TypeScript-소개)
+
+[2강 TypeScript 실습 예시](#2강-typescript-실습-예시)
+
+[3강 인터페이스 (interface)](#3강-인터페이스-interface)
+
+[4강 함수 (Function)](#4강-함수-function)
+
+[5강 리터럴, 유니온/교차 타입](#5강-리터럴-유니온교차-타입)
+
+[6강 클래스 (Class)](#6강-클래스-class)
+
+[7강 제네릭 (Generic)](#7강-제네릭-generic)
+
+[8강 유틸리티 타입 (Utility Types)](#8강-유틸리티-타입-utility-types)
+
+---
+
+<br><br>
+
+# [1강](#목차) TypeScript란?
 
 **마이크로소프트**에서 구현한 JavaScript의 슈퍼셋(Superset) 프로그래밍 언어. 확장자로는 .ts를 사용하며, 컴파일의 결과물로 JavaScript 코드를 출력한다. 최종적으로 런타임에서는 이렇게 출력된 JavaScript 코드를 구동시키게 된다.
 
@@ -28,7 +50,7 @@ console.log(a*b)  // error
 ```
 이렇게 숫자면 숫자, 문자열이면 문자열이라고 타입을 선언해주어서 계산이 작동되지 못하게 하거나, 컴파일 전에 오류 메시지를 띄우게 한다.
 
-## [2강] TypeScript 실습 예시
+## [2강](#목차) TypeScript 실습 예시
 
 ### (1). 기본 자료형
 
@@ -103,7 +125,7 @@ let a: null = null;
 let b: undefined = undefined;
 ```
 
-## 3강 인터페이스 (interface)
+## [3강](#목차) 인터페이스 (interface)
 
 ### (1). 인터페이스 기본
 
@@ -226,7 +248,7 @@ interface ToyCar extends Car, Toy {
 }
 ```
 
-## 4강 함수 (Function)
+## [4강](#목차) 함수 (Function)
 
 ### (1). 함수 기본형
 
@@ -315,7 +337,7 @@ function join(name: string, age: number | string): User | string {
 }
 ```
 
-## 5강 리터럴, 유니온/교차 타입
+## [5강](#목차) 리터럴, 유니온/교차 타입
 
 ### (1). 리터럴 타입 (Literal Type)
 
@@ -390,7 +412,7 @@ const toyCar: Toy & Car = {
 }
 ```
 
-## 6강 클래스 (Class)
+## [6강](#목차) 클래스 (Class)
 
 ### (1). 클래스 기본
 
@@ -477,7 +499,7 @@ class Bmw extends Car {
 const z4 = new Bmw('black');
 ```
 
-## 7강 제네릭 (Generic)
+## [7강](#목차) 제네릭 (Generic)
 
 ### (1). 제네릭 기본
 
@@ -561,7 +583,7 @@ showName(car);    // Benz
 showName(book);   // error
 ```
 
-## 8강 유틸리티 타입 (Utility Types)
+## [8강](#목차) 유틸리티 타입 (Utility Types)
 
 ### (1). keyof
 
@@ -736,3 +758,5 @@ type T2 = Exclude<T1, number>;  // string
 type T1 = string | null | undefined | void;
 type T2 = NonNullable<T1>;  // string
 ```
+
+Copyright © 2025 SorrowAddict
