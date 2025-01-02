@@ -383,9 +383,96 @@ interface Toy {
 }
 
 const toyCar: Toy & Car = {
-  name: "toyCar",
+  name: 'toyCar',
   start() {},
-  color: "blue",
+  color: 'blue',
   price: 1000,
 }
+```
+
+## 6강 클래스 (Class)
+
+### (1). 클래스 기본
+
+```ts
+class Car {
+  color: string;
+  constructor(color: string) {
+    this.color = color;
+  }
+  start() {
+    console.log('start')
+  }
+}
+
+const bmw = new Car('red')
+```
+
+### (2). 접근 제한자 (Access Modifiers) - public, private, protected
+
+```ts
+/*
+  public: 어디서든 접근 가능
+  private: 클래스 내부에서만 접근 가능 (자식 OK)
+  protected: 클래스 내부와 상속받은 클래스에서만 접근 가능
+*/
+class Car {
+  // private name: string = 'car';
+  #name: string = 'car';
+  color: string;
+  static wheels: number = 4;
+  constructor(color: string, name) {
+    this.color = color;
+    this.name = name;
+  }
+  start() {
+    console.log('start')
+    console.log(this.#name)
+    console.log(this.wheels)  // static 변수는 this로 접근 불가
+    console.log(Car.wheels)  // static 변수는 클래스명으로 접근
+  }
+}
+
+class Bmw extends Car {
+  constructor(color: string) {
+    super(color);
+    showName() {
+      console.log(super.#name);  // error
+    }
+  }
+}
+
+const z4 = new Bmw('black');
+console.log(z4.name); // error
+// z4.name = 'zzzz4';
+
+console.log(Car.wheels);  // 4
+```
+
+### (3). 추상 클래스 (Abstract Class)
+
+- 추상 클래스는 인스턴스를 생성할 수 없는 클래스이다. 상속받아서 사용해야 한다.
+
+```ts
+abstract class Car {
+  color: string;
+  constructor(color: string) {
+    this.color = color;
+  }
+  start() {
+    console.log('start')
+  }
+  abstract doSomething(): void;
+}
+
+class Bmw extends Car {
+  constructor(color: string) {
+    super(color);
+  }
+  doSomething() {
+    alert(3);
+  }
+}
+
+const z4 = new Bmw('black');
 ```
