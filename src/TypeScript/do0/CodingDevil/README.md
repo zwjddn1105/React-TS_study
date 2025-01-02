@@ -1,6 +1,6 @@
 # 목차
 
-[1강 TypeScript 소개](#1강-TypeScript-소개)
+[1강 TypeScript 소개](#1강-typescript란)
 
 [2강 TypeScript 실습 예시](#2강-typescript-실습-예시)
 
