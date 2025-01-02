@@ -105,3 +105,123 @@ let b: undefined = undefined;
 
 ## 인터페이스 (interface)
 
+### (1). 인터페이스 기본
+
+```ts
+type Score = 'A' | 'B' | 'C' | 'F';
+
+interface User {
+  name: string;
+  age: number;
+  gender?: string; // 선택적 프로퍼티
+  birthYear: number;
+  // readonly birthYear: number; // 읽기 전용 프로퍼티
+  [grade: number]: Score; // 인덱서블 타입
+}
+
+let user: User = {
+  name: 'xx',
+  age: 30,
+  birthYear: 2000,
+  1: 'A',
+}
+
+// 인터페이스를 사용하면 객체의 타입을 미리 정의할 수 있다.
+user.age = '30'; // error
+user.gender = "male"
+
+console.log(user.age);
+```
+
+### (2). 함수형 인터페이스
+
+```ts
+// 숫자끼리 더하는 함수형 인터페이스
+interface Add {
+  (num1: number, num2: number): number;
+}
+
+const add: Add = (x, y) => {
+  return x + y;
+}
+
+add(10, 20);
+
+// ------------------------------------------------
+// 나이를 받아서 성인인지 아닌지 판별하는 함수형 인터페이스
+interface IsAdult {
+  (age: number): boolean;
+}
+
+const a: IsAdult = (age) => {
+  return age > 19;
+}
+
+a(33);  // true
+```
+
+### (3). 클래스 인터페이스 (implements)
+
+```ts
+interface Car {
+  color: string;
+  wheels: number;
+  start(): void;
+}
+
+// Interface Inheritance
+interface Benz extends Car {
+  color;
+  wheels: 4;
+  constructor(c: string) {
+    this.color = c;
+  }
+  start() {
+    console.log('Benz start');
+  }
+}
+
+const benz: Benz = {
+  color;
+  door: 5,
+  stop() {
+    console.log('Benz stop');
+  }
+}
+
+class Bmw implements Car {
+  color;
+  wheels: 4;
+
+  constructor(c: string) {
+    this.color = c;
+  }
+
+  start() {
+    console.log('BMW start');
+  }
+}
+
+const b = new Bmw('green');
+console.log(b);
+// Bmw { color: 'green', wheels: 4 }
+b.start();
+// BMW start
+```
+
+- 여러 인터페이스를 상속받을 수 있다.
+```ts
+interface Car {
+  color: string;
+  wheels: number;
+  start(): void;
+}
+
+interface Toy {
+  name: string;
+}
+
+interface ToyCar extends Car, Toy {
+  price: number;
+}
+```
