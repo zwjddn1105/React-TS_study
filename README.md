@@ -31,6 +31,8 @@
 - 내용:
   1. 리액트 공식문서 읽기
   2. 타입스크립트 강의 듣기
+  3. 프로젝트를 진행하면서 구현한 로직 공유
+  4. 프로젝트를 진행하면서 문제를 해결한 방법 공유
 
 ## 📚 진행 과정
 
@@ -132,7 +134,15 @@
 </details>
 
 <details>
-  <summary>05주차 : ✅ 25/01/03 ~ 24/01/08 => TypeScript</summary>
+  <summary>05주차 : ✅ 25/01/03 ~ 24/01/08 => React + TypeScript</summary>
+
+  > 학습 내용
+  - 추후 추가
+
+</details>
+
+<details>
+  <summary>06주차 : ✅ 25/01/08 ~ 24/01/15 => React + TypeScript</summary>
 
   > 학습 내용
   - 추후 추가
