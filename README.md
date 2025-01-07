@@ -31,6 +31,7 @@
 - 내용:
   1. 리액트 공식문서 읽기
   2. 타입스크립트 강의 듣기
+      - [인프런 제로초 강의](https://www.inflearn.com/course/react-typescript-webgame)
   3. 프로젝트를 진행하면서 구현한 로직 공유
   4. 프로젝트를 진행하면서 문제를 해결한 방법 공유
 
