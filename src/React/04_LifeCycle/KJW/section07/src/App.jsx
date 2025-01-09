@@ -1,27 +1,34 @@
 import "./App.css";
 import Viewer from "./components/Viewer";
 import Controller from "./components/Controller";
-import { useState, useEffect } from "react";
+import Even from "./components/Even";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
-  // useEffect의 두번째 인자인 배열에 들어가는 값이 바뀌면 콜백함수가 실행됨.
-  // 이 배열을 따라서 의존성 배열이라 부른다
-  // dependency array
-  // 줄여서 deps
-  // deps에 여러개의 변수가 들어가도 됨
+
+  const isMount = useRef(false);
+  // 1. 마운트: 탄생
+  // 처음에 컴포넌트가 렌더링될 때 실행시키고 싶은 코드를 작성
   useEffect(() => {
-    console.log(`count: ${count} / input: ${input}`);
-  }, [count, input]);
-  // 이렇게하면 useEffect의 콜백함수는 count나 input 중 하나의 값만 바뀌어도 실행됨
+    console.log("mount");
+  }, []);
+  // 2. 업데이트: 변화, 리렌더링
+  // 2번째 인자인 배열값을 전달하지 않으면 됨
+  // isMount의 값이 처음은 false니 아래 update를 실행하지 않음
+  // 이후 state의 값이 바뀌면 계속 리렌더링 되므로 update출력됨됨
+  useEffect(() => {
+    if (!isMount.current) {
+      isMount.current = true;
+      return;
+    }
+    console.log("update");
+  });
+  // 3. 언마운트: 죽음
 
   const onClickButton = (value) => {
     setCount(count + value);
-    // console.log(count)
-    // 이런식으로 useEffect를 만들지 말고 이것만 출력하면 안될까?
-    // setCount는 비동기함수이기 때문에 여기이벤트를 이용해서 콘솔에 출력하게 될 경우
-    // 변경된 count값이 아닌 변경되기 전 count값이 출력된다.
   };
 
   return (
@@ -38,6 +45,7 @@ function App() {
         </section>
         <section>
           <Viewer count={count} />
+          {count % 2 === 0 ? <Even /> : null}
         </section>
         <section>
           <Controller onClickButton={onClickButton} />
